@@ -1,9 +1,9 @@
 package jp.fujino.SalaryDataManager.application.controller;
 
 import jp.fujino.SalaryDataManager.application.resource.HttpResponseObject;
-import jp.fujino.SalaryDataManager.domain.object.SalaryData;
 import jp.fujino.SalaryDataManager.domain.service.SalaryDataService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,32 +24,54 @@ public class SalaryDataController {
 
     /** Find by Primary key **/
     @GetMapping(value = "/searchByKey/{month}/{paymentType}")
-    public SalaryData getDataByKey(
+    public HttpResponseObject getDataByKey(
             @PathVariable("month") String month,
             @PathVariable("paymentType") String paymentType
     ) {
+        HttpResponseObject response = new HttpResponseObject();
         try {
-            HttpResponseObject response = new HttpResponseObject();
-            response.setHttpStatus("OK");
-            response.setMessage();
+            response.setHttpStatus(HttpStatus.OK);
+            response.setMessage("Success");
+            response.setResponseData(salaryDataService.findById(month, paymentType));
+        } catch (Exception e) {
+            response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
+            response.setMessage(e.getMessage());
         }
-        return salaryDataService.findById(month, paymentType);
+        return response;
     }
 
     /** Find by Month **/
     @GetMapping(value = "/searchByMonth/{month}")
-    public List<SalaryData> getDataByMonth(
+    public HttpResponseObject getDataByMonth(
             @PathVariable("month") String month
     ) {
-        return salaryDataService.findByMonth(month);
+        HttpResponseObject response = new HttpResponseObject();
+        try {
+            response.setHttpStatus(HttpStatus.OK);
+            response.setMessage("Success");
+            response.setResponseData(salaryDataService.findByMonth(month));
+        } catch (Exception e) {
+            response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
+            response.setMessage(e.getMessage());
+        }
+        return response;
     }
 
     /** Find by PaymentType **/
     @GetMapping(value = "/searchByPaymentType/{paymentType}")
-    public List<SalaryData> getDataByPaymentType(
+    public HttpResponseObject getDataByPaymentType(
             @PathVariable("paymentType") String paymentType
     ) {
-        return salaryDataService.findByPaymentType(paymentType);
+        HttpResponseObject response = new HttpResponseObject();
+        try {
+            response.setHttpStatus(HttpStatus.OK);
+            response.setMessage("Success");
+            response.setResponseData(salaryDataService.findByPaymentType(paymentType));
+        } catch (Exception e) {
+            response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
+            response.setMessage(e.getMessage());
+        }
+        return response;
     }
 
 }

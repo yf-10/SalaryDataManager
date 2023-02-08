@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -21,8 +22,8 @@ public class SalaryDataService {
     /** Find by Primary key **/
     public SalaryData findById(String month, String paymentType) {
         SalaryDataKey key = new SalaryDataKey(month, paymentType);
-        SalaryDataEntity entity = salaryDataRepository.findById(key);
-        return new SalaryData(entity);
+        Optional<SalaryDataEntity> entity = salaryDataRepository.findById(key);
+        return new SalaryData(entity.get());
     }
 
     /** Find by Month **/

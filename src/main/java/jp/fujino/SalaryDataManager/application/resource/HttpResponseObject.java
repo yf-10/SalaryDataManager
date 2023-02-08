@@ -2,18 +2,17 @@ package jp.fujino.SalaryDataManager.application.resource;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.http.HttpStatus;
 
 @Getter
 @Setter
 public class HttpResponseObject {
 
     // HTTP Status
-    private String httpStatus;
+    private HttpStatus httpStatus;
     // Message
     private String message;
-    // Object
-    private Object object;
-
-    public HttpResponseObject(){};
+    // Response Data
+    private Object responseData;
 
 }

@@ -6,12 +6,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public interface SalaryDataRepository extends JpaRepository<SalaryDataEntity, String> {
+public interface SalaryDataRepository extends JpaRepository<SalaryDataEntity, SalaryDataKey> {
 
-    /** Find by Primary key **/
-    SalaryDataEntity findById(SalaryDataKey key);
+    /**
+     * Find by Primary key
+     **/
+    Optional<SalaryDataEntity> findById(SalaryDataKey key);
 
     /** Find by Month **/
     List<SalaryDataEntity> findByMonth(String month);

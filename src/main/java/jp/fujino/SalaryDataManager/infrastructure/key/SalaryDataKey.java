@@ -1,5 +1,6 @@
 package jp.fujino.SalaryDataManager.infrastructure.key;
 
+import jp.fujino.SalaryDataManager.domain.object.SalaryData;
 import lombok.Data;
 
 import java.io.Serializable;

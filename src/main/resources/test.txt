@@ -1,0 +1,5 @@
+# Ex.) POST request with @RequestBody
+curl -X POST -H 'Content-Type:application/json' 'localhost:8888/salary/saveData' -d '{"createdAt":"2023/01/01 00:00:00", "createdBy":"TEST", "updatedAt":"2023/01/01 00:00:00", "updatedBy":"TEST", "month":"202302", "paymentType":"TEST", "amount":"100000"}'
+
+# Ex.) POST request with @RequestParam
+curl -X POST -H 'Content-Type:application/json' 'localhost:8888/salary/addData?month=202302&paymentType=TEST&amount=10000'

@@ -6,14 +6,29 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "salary")
 @IdClass(value = SalaryDataKey.class)
-public class SalaryDataEntity extends CommonEntity implements Serializable {
+public class SalaryDataEntity implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_at")
+    private Date createdAt;
+
+    @Column(name = "created_by")
+    private String createdBy;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "updated_at")
+    private Date updatedAt;
+
+    @Column(name = "updated_by")
+    private String updatedBy;
 
     @Id
     @Column(name = "month")

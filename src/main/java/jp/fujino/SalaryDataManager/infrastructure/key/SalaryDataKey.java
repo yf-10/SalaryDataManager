@@ -1,15 +1,18 @@
 package jp.fujino.SalaryDataManager.infrastructure.key;
 
-import jp.fujino.SalaryDataManager.domain.object.SalaryData;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class SalaryDataKey implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private final String month;
-    private final String paymentType;
+    private String month;
+    private String paymentType;
 
 }

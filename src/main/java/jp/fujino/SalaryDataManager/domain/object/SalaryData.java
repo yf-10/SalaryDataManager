@@ -2,24 +2,28 @@ package jp.fujino.SalaryDataManager.domain.object;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jp.fujino.SalaryDataManager.infrastructure.entity.SalaryDataEntity;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class SalaryData implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @JsonFormat(pattern = "yyyy/mm/dd HH:mm:ss", timezone = "Asia/Tokyo")
-    private final Date createdAt;
-    private final String createdBy;
+    private Date createdAt;
+    private String createdBy;
     @JsonFormat(pattern = "yyyy/mm/dd HH:mm:ss", timezone = "Asia/Tokyo")
-    private final Date updatedAt;
-    private final String updatedBy;
-    private final String month;
-    private final String paymentType;
-    private final int amount;
+    private Date updatedAt;
+    private String updatedBy;
+    private String month;
+    private String paymentType;
+    private int amount;
 
     /** Constructor **/
     public SalaryData(SalaryDataEntity entity) {

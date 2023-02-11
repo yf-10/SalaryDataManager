@@ -22,4 +22,7 @@ public interface SalaryDataRepository extends JpaRepository<SalaryDataEntity, Sa
     /** Find by PaymentType **/
     List<SalaryDataEntity> findByPaymentType(String paymentType);
 
+    /** Add Data **/
+    SalaryDataEntity save(SalaryDataEntity entity);
+
 }

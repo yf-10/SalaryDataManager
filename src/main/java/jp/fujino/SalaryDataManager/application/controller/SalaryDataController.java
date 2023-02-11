@@ -1,16 +1,12 @@
 package jp.fujino.SalaryDataManager.application.controller;
 
 import jp.fujino.SalaryDataManager.application.resource.HttpResponseObject;
+import jp.fujino.SalaryDataManager.domain.object.SalaryData;
 import jp.fujino.SalaryDataManager.domain.service.SalaryDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(
@@ -67,6 +63,48 @@ public class SalaryDataController {
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
             response.setResponseData(salaryDataService.findByPaymentType(paymentType));
+        } catch (Exception e) {
+            response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
+            response.setMessage(e.getMessage());
+        }
+        return response;
+    }
+
+    /** Add Data **/
+    @PostMapping(value = "/addData")
+    public HttpResponseObject addData(
+            @RequestParam(value = "createdBy", defaultValue = "Unknown") String createdBy,
+            @RequestParam(value = "month") String month,
+            @RequestParam(value = "paymentType") String paymentType,
+            @RequestParam(value = "amount") int amount
+    ) {
+        HttpResponseObject response = new HttpResponseObject();
+        try {
+            response.setHttpStatus(HttpStatus.OK);
+            response.setMessage("Success");
+            response.setResponseData(salaryDataService.addSalaryData(
+                    createdBy,
+                    month,
+                    paymentType,
+                    amount
+            ));
+        } catch (Exception e) {
+            response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
+            response.setMessage(e.getMessage());
+        }
+        return response;
+    }
+
+    /** Save Data **/
+    @PostMapping(value = "/saveData")
+    public HttpResponseObject saveData(
+            @RequestBody SalaryData data
+    ) {
+        HttpResponseObject response = new HttpResponseObject();
+        try {
+            response.setHttpStatus(HttpStatus.OK);
+            response.setMessage("Success");
+            response.setResponseData(salaryDataService.saveSalaryData(data));
         } catch (Exception e) {
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
             response.setMessage(e.getMessage());

@@ -11,9 +11,7 @@ import java.util.Optional;
 @Repository
 public interface SalaryDataRepository extends JpaRepository<SalaryDataEntity, SalaryDataKey> {
 
-    /**
-     * Find by PrimaryKey
-     **/
+    /** Find by PrimaryKey **/
     Optional<SalaryDataEntity> findById(SalaryDataKey key);
 
     /** Find by Month **/

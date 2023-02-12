@@ -4,20 +4,21 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jp.fujino.SalaryDataManager.infrastructure.entity.SalaryDataEntity;
 import lombok.Data;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.Currency;
 import java.util.Date;
 
 @Data
 public class SalaryData implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
 
     /** Field **/
-    @JsonFormat(pattern = "yyyy/mm/dd HH:mm:ss", timezone = "Asia/Tokyo")
+    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "Asia/Tokyo")
     private final Date createdAt;
     private final String createdBy;
-    @JsonFormat(pattern = "yyyy/mm/dd HH:mm:ss", timezone = "Asia/Tokyo")
+    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "Asia/Tokyo")
     private final Date updatedAt;
     private final String updatedBy;
     private final int exclusiveFlag;
@@ -37,7 +38,7 @@ public class SalaryData implements Serializable {
         this.exclusiveFlag = entity.getExclusiveFlag();
         this.month = entity.getMonth();
         this.paymentType = entity.getPaymentType();
-        this.money = new Money(entity.getAmount(), Currency.getInstance(entity.getCurrency()));
+        this.money = new Money(entity.getAmount(), entity.getCurrencyCode());
     }
 
     public SalaryData(

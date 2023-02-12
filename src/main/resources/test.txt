@@ -1,5 +1,8 @@
-# Ex.) POST request with @RequestBody
-curl -X POST -H 'Content-Type:application/json' 'localhost:8888/salary/saveData' -d '{"createdAt":"2023/01/01 00:00:00", "createdBy":"TEST", "updatedAt":"2023/01/01 00:00:00", "updatedBy":"TEST", "month":"202302", "paymentType":"TEST", "amount":"100000"}'
+# Ex.) Save data
+curl -X POST -H 'Content-Type:application/json; charset=utf-8' 'localhost:8888/salary/saveData' -d '{"createdAt":"2023/02/12 20:48:55","createdBy":"Unknown","updatedAt":"2023/02/12 20:48:55","updatedBy":"Unknown","exclusiveFlag":0,"month":"202302","paymentType":"TEST","money":{"amount":10000,"currencyCode":"JPY"}}}'
 
-# Ex.) POST request with @RequestParam
-curl -X POST -H 'Content-Type:application/json' 'localhost:8888/salary/addData?month=202302&paymentType=TEST&amount=10000'
+# Ex.) Add data
+curl -X POST 'localhost:8888/salary/addData?month=202302&paymentType=TEST&amount=10000&currencyCode=JPY'
+
+# Ex.) Search by "month"
+curl -X GET 'localhost:8888/salary/searchByMonth?month=202302'

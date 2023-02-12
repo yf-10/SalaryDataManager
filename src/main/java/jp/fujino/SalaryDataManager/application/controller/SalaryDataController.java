@@ -9,8 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Currency;
-
 @RestController
 @RequestMapping(
         value = "/salary",
@@ -22,10 +20,10 @@ public class SalaryDataController {
     private SalaryDataService salaryDataService;
 
     /** Find by Primary key **/
-    @GetMapping(value = "/searchByKey/{month}/{paymentType}")
-    public HttpResponseObject getDataByKey(
-            @PathVariable("month") String month,
-            @PathVariable("paymentType") String paymentType
+    @GetMapping(value = "/searchByKey")
+    public HttpResponseObject getDataByPrimaryKey(
+            @RequestParam("month") final String month,
+            @RequestParam("paymentType") final String paymentType
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
@@ -40,9 +38,9 @@ public class SalaryDataController {
     }
 
     /** Find by Month **/
-    @GetMapping(value = "/searchByMonth/{month}")
+    @GetMapping(value = "/searchByMonth")
     public HttpResponseObject getDataByMonth(
-            @PathVariable("month") String month
+            @RequestParam("month") final String month
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
@@ -57,9 +55,9 @@ public class SalaryDataController {
     }
 
     /** Find by PaymentType **/
-    @GetMapping(value = "/searchByPaymentType/{paymentType}")
+    @GetMapping(value = "/searchByPaymentType")
     public HttpResponseObject getDataByPaymentType(
-            @PathVariable("paymentType") String paymentType
+            @RequestParam("paymentType") final String paymentType
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
@@ -76,11 +74,11 @@ public class SalaryDataController {
     /** Add Data **/
     @PostMapping(value = "/addData")
     public HttpResponseObject addData(
-            @RequestParam(value = "createdBy", defaultValue = "Unknown") String createdBy,
-            @RequestParam(value = "month") String month,
-            @RequestParam(value = "paymentType") String paymentType,
-            @RequestParam(value = "amount") int amount,
-            @RequestParam(value = "currencyCode") String currencyCode
+            @RequestParam(value = "createdBy", defaultValue = "Unknown") final String createdBy,
+            @RequestParam(value = "month") final String month,
+            @RequestParam(value = "paymentType") final String paymentType,
+            @RequestParam(value = "amount") final int amount,
+            @RequestParam(value = "currencyCode") final String currencyCode
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
@@ -90,7 +88,7 @@ public class SalaryDataController {
                     createdBy,
                     month,
                     paymentType,
-                    new Money(amount, Currency.getInstance(currencyCode))
+                    new Money(amount, currencyCode)
             ));
         } catch (Exception e) {
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
@@ -102,8 +100,8 @@ public class SalaryDataController {
     /** Save Data **/
     @PostMapping(value = "/saveData")
     public HttpResponseObject saveData(
-            @RequestParam(value = "updatedBy", defaultValue = "Unknown") String updatedBy,
-            @RequestBody SalaryData data
+            @RequestParam(value = "updatedBy", defaultValue = "Unknown") final String updatedBy,
+            @RequestBody final SalaryData data
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {

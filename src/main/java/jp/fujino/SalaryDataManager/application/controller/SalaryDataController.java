@@ -1,12 +1,15 @@
 package jp.fujino.SalaryDataManager.application.controller;
 
 import jp.fujino.SalaryDataManager.application.resource.HttpResponseObject;
+import jp.fujino.SalaryDataManager.domain.object.Money;
 import jp.fujino.SalaryDataManager.domain.object.SalaryData;
 import jp.fujino.SalaryDataManager.domain.service.SalaryDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Currency;
 
 @RestController
 @RequestMapping(
@@ -76,7 +79,8 @@ public class SalaryDataController {
             @RequestParam(value = "createdBy", defaultValue = "Unknown") String createdBy,
             @RequestParam(value = "month") String month,
             @RequestParam(value = "paymentType") String paymentType,
-            @RequestParam(value = "amount") int amount
+            @RequestParam(value = "amount") int amount,
+            @RequestParam(value = "currencyCode") String currencyCode
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
@@ -86,7 +90,7 @@ public class SalaryDataController {
                     createdBy,
                     month,
                     paymentType,
-                    amount
+                    new Money(amount, Currency.getInstance(currencyCode))
             ));
         } catch (Exception e) {
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
@@ -98,13 +102,14 @@ public class SalaryDataController {
     /** Save Data **/
     @PostMapping(value = "/saveData")
     public HttpResponseObject saveData(
+            @RequestParam(value = "updatedBy", defaultValue = "Unknown") String updatedBy,
             @RequestBody SalaryData data
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryDataService.saveSalaryData(data));
+            response.setResponseData(salaryDataService.saveSalaryData(data, updatedBy));
         } catch (Exception e) {
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
             response.setMessage(e.getMessage());

@@ -1,6 +1,7 @@
 package jp.fujino.SalaryDataManager.domain.service;
 
 import jakarta.transaction.Transactional;
+import jp.fujino.SalaryDataManager.domain.object.Money;
 import jp.fujino.SalaryDataManager.domain.object.SalaryData;
 import jp.fujino.SalaryDataManager.domain.repository.SalaryDataRepository;
 import jp.fujino.SalaryDataManager.infrastructure.entity.SalaryDataEntity;
@@ -8,7 +9,6 @@ import jp.fujino.SalaryDataManager.infrastructure.key.SalaryDataKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public class SalaryDataService {
     @Autowired
     SalaryDataRepository salaryDataRepository;
 
-    /** Find by Primary key **/
+    /** Find by PrimaryKey **/
     public SalaryData findById(String month, String paymentType) {
         SalaryDataKey key = new SalaryDataKey(month, paymentType);
         Optional<SalaryDataEntity> entity = salaryDataRepository.findById(key);
@@ -51,32 +51,38 @@ public class SalaryDataService {
             String createdBy,
             String month,
             String paymentType,
-            int amount
+            Money money
     ) {
         Date timestamp = new Date();
-        SalaryDataEntity entity = new SalaryDataEntity();
-        entity.setCreatedAt(timestamp);
-        entity.setCreatedBy(createdBy);
-        entity.setUpdatedAt(timestamp);
-        entity.setUpdatedBy(createdBy);
-        entity.setMonth(month);
-        entity.setPaymentType(paymentType);
-        entity.setAmount(amount);
+        SalaryDataEntity entity = new SalaryDataEntity(
+                timestamp,
+                createdBy,
+                timestamp,
+                createdBy,
+                0,
+                month,
+                paymentType,
+                money.getAmount(),
+                money.getCurrency().getCurrencyCode()
+        );
         entity = salaryDataRepository.save(entity);
         return new SalaryData(entity);
     }
 
     /** Save Data **/
-    public SalaryData saveSalaryData(SalaryData data) {
+    public SalaryData saveSalaryData(SalaryData data, String updatedBy) {
         Date timestamp = new Date();
-        SalaryDataEntity entity = new SalaryDataEntity();
-        entity.setCreatedAt(data.getCreatedAt());
-        entity.setCreatedBy(data.getCreatedBy());
-        entity.setUpdatedAt(timestamp);
-        entity.setUpdatedBy(data.getUpdatedBy());
-        entity.setMonth(data.getMonth());
-        entity.setPaymentType(data.getPaymentType());
-        entity.setAmount(data.getAmount());
+        SalaryDataEntity entity = new SalaryDataEntity(
+                data.getCreatedAt(),
+                data.getCreatedBy(),
+                timestamp,
+                updatedBy,
+                data.getExclusiveFlag(),
+                data.getMonth(),
+                data.getPaymentType(),
+                data.getMoney().getAmount(),
+                data.getMoney().getCurrency().getCurrencyCode()
+        );
         entity = salaryDataRepository.save(entity);
         return new SalaryData(entity);
     }

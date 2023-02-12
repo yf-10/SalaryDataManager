@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface SalaryDataRepository extends JpaRepository<SalaryDataEntity, SalaryDataKey> {
 
     /**
-     * Find by Primary key
+     * Find by PrimaryKey
      **/
     Optional<SalaryDataEntity> findById(SalaryDataKey key);
 

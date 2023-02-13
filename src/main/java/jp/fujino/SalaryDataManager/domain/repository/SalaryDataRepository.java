@@ -11,16 +11,46 @@ import java.util.Optional;
 @Repository
 public interface SalaryDataRepository extends JpaRepository<SalaryDataEntity, SalaryDataKey> {
 
+    /**
+     * CRUD: Read
+     */
+
     /** Find by PrimaryKey **/
     Optional<SalaryDataEntity> findById(SalaryDataKey key);
+
+    /** Exists by PrimaryKey **/
+    boolean existsById(SalaryDataKey key);
 
     /** Find by Month **/
     List<SalaryDataEntity> findByMonth(String month);
 
+    /** Find by Month Between **/
+    List<SalaryDataEntity> findByMonthBetween(String from, String to);
+
+    /** Find by Month After **/
+    List<SalaryDataEntity> findByMonthAfter(String from);
+
+    /** Find by Month Before **/
+    List<SalaryDataEntity> findByMonthBefore(String to);
+
     /** Find by PaymentType **/
     List<SalaryDataEntity> findByPaymentType(String paymentType);
 
-    /** Add Data **/
+    /** Find by PaymentType In **/
+    List<SalaryDataEntity> findByPaymentTypeIn(List<String> paymentType);
+
+    /**
+     * CRUD: Create, Update
+     */
+
+    /** Save **/
     SalaryDataEntity save(SalaryDataEntity entity);
+
+    /**
+     * CRUD: Delete
+     */
+
+    /** Delete **/
+    void delete(SalaryDataEntity entity);
 
 }

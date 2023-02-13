@@ -15,10 +15,10 @@ public class SalaryData implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /** Field **/
-    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "Asia/Tokyo")
+    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss.SSS", timezone = "Asia/Tokyo")
     private final Date createdAt;
     private final String createdBy;
-    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "Asia/Tokyo")
+    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss.SSS", timezone = "Asia/Tokyo")
     private final Date updatedAt;
     private final String updatedBy;
     private final int exclusiveFlag;
@@ -27,7 +27,9 @@ public class SalaryData implements Serializable {
     private final Money money;
 
     /** Constructor **/
-    public SalaryData(final SalaryDataEntity entity) throws IllegalArgumentException {
+    public SalaryData(
+            final SalaryDataEntity entity
+    ) throws IllegalArgumentException {
         // "month" Validation
         this.validateMonth(entity.getMonth());
         // Initialize
@@ -71,6 +73,20 @@ public class SalaryData implements Serializable {
         } catch (Exception e) {
             throw new IllegalArgumentException("Month must be 'yyyyMM'.");
         }
+    }
+
+    public SalaryDataEntity covertToEntity() {
+        return new SalaryDataEntity(
+                this.getCreatedAt(),
+                this.getCreatedBy(),
+                this.getUpdatedAt(),
+                this.getUpdatedBy(),
+                this.getExclusiveFlag(),
+                this.getMonth(),
+                this.getPaymentType(),
+                this.getMoney().amount(),
+                this.getMoney().currencyCode()
+        );
     }
 
 }

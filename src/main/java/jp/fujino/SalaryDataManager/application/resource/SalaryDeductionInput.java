@@ -5,9 +5,9 @@ import jp.fujino.SalaryDataManager.domain.object.Money;
 import java.io.Serial;
 import java.io.Serializable;
 
-public record SalaryAdd(
+public record SalaryDeductionInput(
         String month,
-        String paymentType,
+        String deductionType,
         Money money
 ) implements Serializable {
     @Serial

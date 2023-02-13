@@ -1,10 +1,10 @@
 package jp.fujino.SalaryDataManager.application.controller;
 
 import jp.fujino.SalaryDataManager.application.resource.HttpResponseObject;
-import jp.fujino.SalaryDataManager.application.resource.SalaryInput;
+import jp.fujino.SalaryDataManager.application.resource.SalaryDeductionInput;
 import jp.fujino.SalaryDataManager.domain.object.Money;
-import jp.fujino.SalaryDataManager.domain.object.Salary;
-import jp.fujino.SalaryDataManager.domain.service.SalaryService;
+import jp.fujino.SalaryDataManager.domain.object.SalaryDeduction;
+import jp.fujino.SalaryDataManager.domain.service.SalaryDeductionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,13 +14,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping(
-        value = "/salary",
+        value = "/salary_deduction",
         produces = MediaType.APPLICATION_JSON_VALUE
 )
-public class SalaryController {
+public class SalaryDeductionController {
 
     @Autowired
-    private SalaryService salaryService;
+    private SalaryDeductionService salaryDeductionService;
 
     /**
      * CRUD: Read
@@ -30,13 +30,13 @@ public class SalaryController {
     @GetMapping(value = "/findById")
     public HttpResponseObject findById(
             @RequestParam("month") final String month,
-            @RequestParam("paymentType") final String paymentType
+            @RequestParam("deductionType") final String deductionType
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.findById(month, paymentType));
+            response.setResponseData(salaryDeductionService.findById(month, deductionType));
         } catch (Exception e) {
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
             response.setMessage(e.getMessage());
@@ -53,7 +53,7 @@ public class SalaryController {
         try {
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.findByMonth(month));
+            response.setResponseData(salaryDeductionService.findByMonth(month));
         } catch (Exception e) {
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
             response.setMessage(e.getMessage());
@@ -71,7 +71,7 @@ public class SalaryController {
         try {
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.findByMonthBetween(from, to));
+            response.setResponseData(salaryDeductionService.findByMonthBetween(from, to));
         } catch (Exception e) {
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
             response.setMessage(e.getMessage());
@@ -88,7 +88,7 @@ public class SalaryController {
         try {
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.findByMonthAfter(month));
+            response.setResponseData(salaryDeductionService.findByMonthAfter(month));
         } catch (Exception e) {
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
             response.setMessage(e.getMessage());
@@ -105,7 +105,7 @@ public class SalaryController {
         try {
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.findByMonthBefore(month));
+            response.setResponseData(salaryDeductionService.findByMonthBefore(month));
         } catch (Exception e) {
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
             response.setMessage(e.getMessage());
@@ -113,16 +113,16 @@ public class SalaryController {
         return response;
     }
 
-    /** Find by PaymentType **/
-    @GetMapping(value = "/findByPaymentType")
-    public HttpResponseObject findByPaymentType(
-            @RequestParam("paymentType") final String paymentType
+    /** Find by DeductionType **/
+    @GetMapping(value = "/findByDeductionType")
+    public HttpResponseObject findByDeductionType(
+            @RequestParam("deductionType") final String deductionType
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.findByPaymentType(paymentType));
+            response.setResponseData(salaryDeductionService.findByDeductionType(deductionType));
         } catch (Exception e) {
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
             response.setMessage(e.getMessage());
@@ -130,16 +130,16 @@ public class SalaryController {
         return response;
     }
 
-    /** Find by PaymentType In **/
-    @GetMapping(value = "/findByPaymentTypeIn")
-    public HttpResponseObject findByPaymentTypeIn(
-            @RequestBody final List<String> paymentType
+    /** Find by DeductionType In **/
+    @GetMapping(value = "/findByDeductionTypeIn")
+    public HttpResponseObject findByDeductionTypeIn(
+            @RequestBody final List<String> deductionType
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.findByPaymentTypeIn(paymentType));
+            response.setResponseData(salaryDeductionService.findByDeductionTypeIn(deductionType));
         } catch (Exception e) {
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
             response.setMessage(e.getMessage());
@@ -156,7 +156,7 @@ public class SalaryController {
     public HttpResponseObject add(
             @RequestParam(value = "createdBy", defaultValue = "Anonymous") final String createdBy,
             @RequestParam(value = "month") final String month,
-            @RequestParam(value = "paymentType") final String paymentType,
+            @RequestParam(value = "deductionType") final String deductionType,
             @RequestParam(value = "amount") final int amount,
             @RequestParam(value = "currencyCode") final String currencyCode
     ) {
@@ -164,9 +164,9 @@ public class SalaryController {
         try {
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.add(
+            response.setResponseData(salaryDeductionService.add(
                     createdBy,
-                    new SalaryInput(month, paymentType, new Money(amount, currencyCode))
+                    new SalaryDeductionInput(month, deductionType, new Money(amount, currencyCode))
             ));
         } catch (Exception e) {
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
@@ -179,13 +179,13 @@ public class SalaryController {
     @PostMapping(value = "/addJson")
     public HttpResponseObject addJson(
             @RequestParam(value = "createdBy", defaultValue = "Anonymous") final String createdBy,
-            @RequestBody final SalaryInput data
+            @RequestBody final SalaryDeductionInput data
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.add(
+            response.setResponseData(salaryDeductionService.add(
                     createdBy,
                     data
             ));
@@ -200,13 +200,13 @@ public class SalaryController {
     @PostMapping(value = "/addList")
     public HttpResponseObject addList(
             @RequestParam(value = "createdBy", defaultValue = "Anonymous") final String createdBy,
-            @RequestBody final List<SalaryInput> dataList
+            @RequestBody final List<SalaryDeductionInput> dataList
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.addList(
+            response.setResponseData(salaryDeductionService.addList(
                     createdBy,
                     dataList
             ));
@@ -221,13 +221,13 @@ public class SalaryController {
     @PostMapping(value = "/addListForce")
     public HttpResponseObject addListForce(
             @RequestParam(value = "createdBy", defaultValue = "Anonymous") final String createdBy,
-            @RequestBody final List<SalaryInput> dataList
+            @RequestBody final List<SalaryDeductionInput> dataList
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.addListForce(
+            response.setResponseData(salaryDeductionService.addListForce(
                     createdBy,
                     dataList
             ));
@@ -246,13 +246,13 @@ public class SalaryController {
     @PostMapping(value = "/save")
     public HttpResponseObject save(
             @RequestParam(value = "updatedBy", defaultValue = "Anonymous") final String updatedBy,
-            @RequestBody final Salary data
+            @RequestBody final SalaryDeduction data
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.save(updatedBy, data));
+            response.setResponseData(salaryDeductionService.save(updatedBy, data));
         } catch (Exception e) {
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
             response.setMessage(e.getMessage());
@@ -268,13 +268,13 @@ public class SalaryController {
     @PostMapping(value = "/deleteById")
     public HttpResponseObject deleteById(
             @RequestParam(value = "month") final String month,
-            @RequestParam(value = "paymentType") final String paymentType
+            @RequestParam(value = "deductionType") final String deductionType
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.deleteById(month, paymentType));
+            response.setResponseData(salaryDeductionService.deleteById(month, deductionType));
         } catch (Exception e) {
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
             response.setMessage(e.getMessage());

@@ -1,7 +1,7 @@
 package jp.fujino.SalaryDataManager.domain.service;
 
 import jakarta.transaction.Transactional;
-import jp.fujino.SalaryDataManager.application.resource.SalaryAdd;
+import jp.fujino.SalaryDataManager.application.resource.SalaryInput;
 import jp.fujino.SalaryDataManager.domain.object.Salary;
 import jp.fujino.SalaryDataManager.domain.repository.SalaryRepository;
 import jp.fujino.SalaryDataManager.infrastructure.entity.SalaryEntity;
@@ -99,7 +99,7 @@ public class SalaryService {
     /** Add **/
     public Salary add(
             final String createdBy,
-            final SalaryAdd data
+            final SalaryInput data
     ) throws Exception {
         final Date timestamp = new Date();
         final Salary object = new Salary(
@@ -121,8 +121,8 @@ public class SalaryService {
     }
 
     /** Add List **/
-    private boolean validateExistence(final List<SalaryAdd> dataList) {
-        for (SalaryAdd data : dataList) {
+    private boolean validateExistence(final List<SalaryInput> dataList) {
+        for (SalaryInput data : dataList) {
             // Validate "Existence"
             if (existsById(data.month(), data.paymentType())) {
                 return false;
@@ -132,14 +132,14 @@ public class SalaryService {
     }
     public List<Salary> addList(
             final String createdBy,
-            final List<SalaryAdd> dataList
+            final List<SalaryInput> dataList
     ) throws Exception {
         final Date timestamp = new Date();
         List<Salary> objects = new ArrayList<>();
         // Validate list
         if (!validateExistence(dataList))
             throw new Exception("登録済みのデータが存在します。");
-        for (SalaryAdd data : dataList) {
+        for (SalaryInput data : dataList) {
             final Salary object = new Salary(
                     timestamp,
                     createdBy,
@@ -161,11 +161,11 @@ public class SalaryService {
     /** Add List (Force) **/
     public List<Salary> addListForce(
             final String createdBy,
-            final List<SalaryAdd> dataList
+            final List<SalaryInput> dataList
     ) throws Exception {
         final Date timestamp = new Date();
         List<Salary> objects = new ArrayList<>();
-        for (SalaryAdd data : dataList) {
+        for (SalaryInput data : dataList) {
             final Salary object = new Salary(
                     timestamp,
                     createdBy,

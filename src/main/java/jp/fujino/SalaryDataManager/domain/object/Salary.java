@@ -1,7 +1,7 @@
 package jp.fujino.SalaryDataManager.domain.object;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jp.fujino.SalaryDataManager.infrastructure.entity.SalaryDataEntity;
+import jp.fujino.SalaryDataManager.infrastructure.entity.SalaryEntity;
 import lombok.Data;
 
 import java.io.Serial;
@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Data
-public class SalaryData implements Serializable {
+public class Salary implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -27,8 +27,8 @@ public class SalaryData implements Serializable {
     private final Money money;
 
     /** Constructor **/
-    public SalaryData(
-            final SalaryDataEntity entity
+    public Salary(
+            final SalaryEntity entity
     ) throws IllegalArgumentException {
         // "month" Validation
         this.validateMonth(entity.getMonth());
@@ -43,7 +43,7 @@ public class SalaryData implements Serializable {
         this.money = new Money(entity.getAmount(), entity.getCurrencyCode());
     }
 
-    public SalaryData(
+    public Salary(
             final Date createdAt,
             final String createdBy,
             final Date updatedAt,
@@ -71,12 +71,12 @@ public class SalaryData implements Serializable {
         try {
             (new SimpleDateFormat("yyyyMM")).parse(month);
         } catch (Exception e) {
-            throw new IllegalArgumentException("Month must be 'yyyyMM'.");
+            throw new IllegalArgumentException("フォーマットが不正です。[month:YYYYMM]");
         }
     }
 
-    public SalaryDataEntity covertToEntity() {
-        return new SalaryDataEntity(
+    public SalaryEntity covertToEntity() {
+        return new SalaryEntity(
                 this.getCreatedAt(),
                 this.getCreatedBy(),
                 this.getUpdatedAt(),

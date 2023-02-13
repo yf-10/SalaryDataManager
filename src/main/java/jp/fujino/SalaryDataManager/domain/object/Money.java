@@ -10,13 +10,13 @@ public record Money(int amount, String currencyCode) implements Serializable {
     public Money {
         // "amount" Validation
         if (amount < 0) {
-            throw new IllegalArgumentException("Amount must be larger than 0.");
+            throw new IllegalArgumentException("Amount must be larger than 0");
         }
         // "currencyCode" Validation
         try {
             Currency.getInstance(currencyCode);
         } catch (Exception e) {
-            throw new IllegalArgumentException("Currency code abides by ISO 4217.");
+            throw new IllegalArgumentException("Currency code abides by ISO-4217");
         }
     }
 

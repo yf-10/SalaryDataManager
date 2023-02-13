@@ -1,7 +1,7 @@
 package jp.fujino.SalaryDataManager.infrastructure.entity;
 
 import jakarta.persistence.*;
-import jp.fujino.SalaryDataManager.infrastructure.key.SalaryDataKey;
+import jp.fujino.SalaryDataManager.infrastructure.key.SalaryKey;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -17,8 +17,8 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "salary")
-@IdClass(value = SalaryDataKey.class)
-public class SalaryDataEntity implements Serializable {
+@IdClass(value = SalaryKey.class)
+public class SalaryEntity implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 

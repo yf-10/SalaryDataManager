@@ -1,11 +1,16 @@
 # Ex.) Add data
 curl -X POST 'localhost:8888/salary/add?month=202302&paymentType=TEST&amount=10000&currencyCode=JPY'
 curl -X POST 'localhost:8888/salary/add?month=202303&paymentType=TEST2&amount=90000&currencyCode=JPY'
+curl -X POST 'localhost:8888/salary/add?month=XXXXXX&paymentType=TEST2&amount=90000&currencyCode=JPY'
+curl -X POST 'localhost:8888/salary/add?month=202307&paymentType=TEST3&amount=90000&currencyCode=fadfafasf'
 
 # Ex.) Save data
 curl -X POST 'localhost:8888/salary/save' -H 'Content-Type:application/json; charset=utf-8' -d '{"createdAt":"2023/02/12 20:48:55.001","createdBy":"Unknown","updatedAt":"2023/02/12 20:48:55.125","updatedBy":"Unknown","exclusiveFlag":0,"month":"202302","paymentType":"TEST","money":{"amount":10000,"currencyCode":"JPY"}}}'
-curl -X POST 'localhost:8888/salary/save' -H 'Content-Type:application/json; charset=utf-8' -d '{"createdAt":"2023/02/12 20:48:55.001","createdBy":"Unknown","updatedAt":"2023/02/12 20:48:55.125","updatedBy":"Unknown","exclusiveFlag":0,"month":"202305","paymentType":"TEST","money":{"amount":10000,"currencyCode":"JPY"}}}'
-curl -X POST 'localhost:8888/salary/save' -H 'Content-Type:application/json; charset=utf-8' -d '{"createdAt":"2023/02/12 20:48:55.001","createdBy":"Unknown","updatedAt":"2023/02/12 20:48:55.125","updatedBy":"Unknown","exclusiveFlag":0,"month":"202302","paymentType":"TEST","money":{"amount":10000,"currencyCode":"JPY"}}}'
+curl -X POST 'localhost:8888/salary/save' -H 'Content-Type:application/json; charset=utf-8' -d '{"createdAt":"2023/02/12 20:48:55.001","createdBy":"Unknown","updatedAt":"2023/02/12 20:48:55.125","updatedBy":"Unknown","exclusiveFlag":0,"month":"202305","paymentType":"TEST","money":{"amount":50000,"currencyCode":"JPY"}}}'
+curl -X POST 'localhost:8888/salary/save' -H 'Content-Type:application/json; charset=utf-8' -d '{"createdAt":"2023/02/12 20:48:55.001","createdBy":"Unknown","updatedAt":"2023/02/12 20:48:55.125","updatedBy":"Unknown","exclusiveFlag":0,"month":"202303","paymentType":"TEST2","money":{"amount":50000,"currencyCode":"JPY"}}}'
+
+# Ex.) Find by ID
+curl -X GET 'localhost:8888/salary/findById?month=202302&paymentType=TEST'
 
 # Ex.) Find by "month"
 curl -X GET 'localhost:8888/salary/findByMonth?month=202302'
@@ -16,5 +21,9 @@ curl -X GET 'localhost:8888/salary/findByMonthBetween?from=202101&to=205001'
 # Ex.) Find by "paymentType"
 curl -X GET 'localhost:8888/salary/findByPaymentType?paymentType=TEST'
 
-# Ex.) Find by "paymentType" In !!!
-curl -X GET -H 'Content-Type:application/json; charset=utf-8' 'localhost:8888/salary/findByPaymentTypeIn' -d '{"obj":["str":"TEST","str":"TEST2"]}'
+# Ex.) Find by "paymentType" In
+curl -X GET 'localhost:8888/salary/findByPaymentTypeIn' -H 'Content-Type:application/json; charset=utf-8' -d '["TEST","TEST1"]'
+
+# Ex.) Delete by ID
+curl -X POST 'localhost:8888/salary/deleteById?month=202302&paymentType=TEST'
+curl -X POST 'localhost:8888/salary/deleteById?month=209909&paymentType=TEST'

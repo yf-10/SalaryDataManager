@@ -5,7 +5,7 @@ import jp.fujino.SalaryDataManager.domain.object.Money;
 import java.io.Serial;
 import java.io.Serializable;
 
-public record SalaryDataAdd(
+public record SalaryAdd(
         String month,
         String paymentType,
         Money money

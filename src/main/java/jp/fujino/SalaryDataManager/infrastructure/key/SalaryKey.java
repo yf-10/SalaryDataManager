@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SalaryDataKey implements Serializable {
+public class SalaryKey implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 

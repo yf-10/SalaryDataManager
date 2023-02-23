@@ -8,11 +8,11 @@ public record Money(int amount, String currencyCode) implements Serializable {
 
     /** Constructor **/
     public Money {
-        // "amount" Validation
+        // Validate "amount"
         if (amount < 0) {
             throw new IllegalArgumentException("Amount must be larger than 0");
         }
-        // "currencyCode" Validation
+        // Validate "currencyCode"
         try {
             Currency.getInstance(currencyCode);
         } catch (Exception e) {

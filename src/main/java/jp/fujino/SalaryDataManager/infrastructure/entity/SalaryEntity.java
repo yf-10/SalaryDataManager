@@ -23,34 +23,38 @@ public class SalaryEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created_at")
+    @Column(name = "created_at", nullable = false)
     private Date createdAt;
 
-    @Column(name = "created_by")
+    @Column(name = "created_by", nullable = false)
     private String createdBy;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updated_at")
+    @Column(name = "updated_at", nullable = false)
     private Date updatedAt;
 
-    @Column(name = "updated_by")
+    @Column(name = "updated_by", nullable = false)
     private String updatedBy;
 
-    @Column(name = "exclusive_flag")
-    private int exclusiveFlag;
+    @Column(name = "exclusive_flag", nullable = false)
+    private Integer exclusiveFlag;
 
     @Id
-    @Column(name = "month")
+    @Column(name = "month", nullable = false)
     private String month;
 
     @Id
-    @Column(name = "payment_type")
-    private String paymentType;
+    @Column(name = "deduction", nullable = false)
+    private Boolean deduction;
 
-    @Column(name = "amount")
-    private int amount;
+    @Id
+    @Column(name = "payment_item", nullable = false)
+    private String paymentItem;
 
-    @Column(name = "currency_code")
+    @Column(name = "amount", nullable = false)
+    private Integer amount;
+
+    @Column(name = "currency_code", nullable = false)
     private String currencyCode;
 
 }

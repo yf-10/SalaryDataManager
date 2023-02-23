@@ -1,7 +1,6 @@
 package jp.fujino.SalaryDataManager.domain.service;
 
 import jakarta.transaction.Transactional;
-import jp.fujino.SalaryDataManager.application.resource.SalaryInput;
 import jp.fujino.SalaryDataManager.domain.object.Salary;
 import jp.fujino.SalaryDataManager.domain.repository.SalaryRepository;
 import jp.fujino.SalaryDataManager.infrastructure.entity.SalaryEntity;
@@ -9,10 +8,8 @@ import jp.fujino.SalaryDataManager.infrastructure.key.SalaryKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -21,217 +18,128 @@ public class SalaryService {
     @Autowired
     SalaryRepository salaryRepository;
 
-    /**
-     * CRUD: Read
-     */
-
-    /** Find by PrimaryKey **/
-    public Salary findById(final String month, final String paymentType) {
-        final SalaryKey key = new SalaryKey(month, paymentType);
-        final Optional<SalaryEntity> entity = salaryRepository.findById(key);
-        return new Salary(entity.get());
-    }
-
-    /** Exists by PrimaryKey **/
-    public boolean existsById(final String month, final String paymentType) {
-        final SalaryKey key = new SalaryKey(month, paymentType);
-        return salaryRepository.existsById(key);
-    }
-
-    /** Find by Month **/
-    public List<Salary> findByMonth(final String month) {
-        List<Salary> objects = new ArrayList<>();
-        final List<SalaryEntity> entities = salaryRepository.findByMonth(month);
-        for (final SalaryEntity entity : entities)
-            objects.add(new Salary(entity));
-        return objects;
-    }
-
-    /** Find by Month Between **/
-    public List<Salary> findByMonthBetween(final String from, final String to) {
-        List<Salary> objects = new ArrayList<>();
-        final List<SalaryEntity> entities = salaryRepository.findByMonthBetween(from, to);
-        for (final SalaryEntity entity : entities)
-            objects.add(new Salary(entity));
-        return objects;
-    }
-
-    /** Find by Month After **/
-    public List<Salary> findByMonthAfter(final String month) {
-        List<Salary> objects = new ArrayList<>();
-        final List<SalaryEntity> entities = salaryRepository.findByMonthAfter(month);
-        for (final SalaryEntity entity : entities)
-            objects.add(new Salary(entity));
-        return objects;
-    }
-
-    /** Find by Month Before **/
-    public List<Salary> findByMonthBefore(final String month) {
-        List<Salary> objects = new ArrayList<>();
-        final List<SalaryEntity> entities = salaryRepository.findByMonthBefore(month);
-        for (final SalaryEntity entity : entities)
-            objects.add(new Salary(entity));
-        return objects;
-    }
-
-    /** Find by PaymentType **/
-    public List<Salary> findByPaymentType(final String paymentType) {
-        List<Salary> objects = new ArrayList<>();
-        final List<SalaryEntity> entities = salaryRepository.findByPaymentType(paymentType);
-        for (final SalaryEntity entity : entities)
-            objects.add(new Salary(entity));
-        return objects;
-    }
-
-    /** Find by PaymentType In **/
-    public List<Salary> findByPaymentTypeIn(final List<String> paymentType) {
-        List<Salary> objects = new ArrayList<>();
-        final List<SalaryEntity> entities = salaryRepository.findByPaymentTypeIn(paymentType);
-        for (final SalaryEntity entity : entities)
-            objects.add(new Salary(entity));
-        return objects;
-    }
-
-    /**
-     * CRUD: Create
-     */
-
-    /** Add **/
-    public Salary add(
-            final String createdBy,
-            final SalaryInput data
-    ) throws Exception {
-        final Date timestamp = new Date();
-        final Salary object = new Salary(
-                timestamp,
-                createdBy,
-                timestamp,
-                createdBy,
-                0,
-                data.month(),
-                data.paymentType(),
-                data.money()
-        );
-        final SalaryEntity entity = object.covertToEntity();
-        // Validate "Existence"
-        if (existsById(entity.getMonth(), entity.getPaymentType())) {
-            throw new Exception("登録済みです。[" + entity.getMonth() + " " + entity.getPaymentType() + "]");
+    /** GET by PrimaryKey **/
+    public Salary getById(final Salary object) throws Exception {
+        /* Validate "Existence" */
+        if (!object.exists(salaryRepository)) {
+            throw new Exception("登録されていません。[" + object.getMonth() + " " + object.getPaymentItem() + "]");
         }
-        return new Salary(salaryRepository.save(entity));
+        /* Search */
+        final SalaryKey key = new SalaryKey(object.getMonth(), object.getDeduction(), object.getPaymentItem());
+        final SalaryEntity foundEntity = salaryRepository.findById(key).get();
+        final Salary foundObject = new Salary(foundEntity);
+        return foundObject;
     }
 
-    /** Add List **/
-    private boolean validateExistence(final List<SalaryInput> dataList) {
-        for (SalaryInput data : dataList) {
-            // Validate "Existence"
-            if (existsById(data.month(), data.paymentType())) {
-                return false;
+    /** GET by Month **/
+    public List<Salary> getByMonth(final String month) {
+        final List<SalaryEntity> foundEntities = salaryRepository.findByMonth(month);
+        List<Salary> foundObjects = new ArrayList<>();
+        foundEntities.forEach(each -> foundObjects.add(new Salary(each)));
+        return foundObjects;
+    }
+
+    /** GET by Month Between **/
+    public List<Salary> getByMonthBetween(final String monthFrom, final String monthTo) {
+        final List<SalaryEntity> foundEntities = salaryRepository.findByMonthBetween(monthFrom, monthTo);
+        List<Salary> foundObjects = new ArrayList<>();
+        foundEntities.forEach(each -> foundObjects.add(new Salary(each)));
+        return foundObjects;
+    }
+
+    /** GET by Month After **/
+    public List<Salary> getByMonthAfter(final String monthFrom) {
+        final List<SalaryEntity> foundEntities = salaryRepository.findByMonthAfter(monthFrom);
+        List<Salary> foundObjects = new ArrayList<>();
+        foundEntities.forEach(each -> foundObjects.add(new Salary(each)));
+        return foundObjects;
+    }
+
+    /** GET by Month Before **/
+    public List<Salary> getByMonthBefore(final String monthTo) {
+        final List<SalaryEntity> foundEntities = salaryRepository.findByMonthBefore(monthTo);
+        List<Salary> foundObjects = new ArrayList<>();
+        foundEntities.forEach(each -> foundObjects.add(new Salary(each)));
+        return foundObjects;
+    }
+
+    /** GET by PaymentItem **/
+    public List<Salary> getByPaymentItem(final Boolean deduction, final String paymentItem) {
+        final List<SalaryEntity> foundEntities = salaryRepository.findByDeductionAndPaymentItem(deduction, paymentItem);
+        List<Salary> foundObjects = new ArrayList<>();
+        foundEntities.forEach(each -> foundObjects.add(new Salary(each)));
+        return foundObjects;
+    }
+
+    /** GET by PaymentItem In **/
+    public List<Salary> getByPaymentItem(final Boolean deduction, final List<String> paymentItemList) {
+        final List<SalaryEntity> foundEntities = salaryRepository.findByDeductionAndPaymentItemIn(deduction, paymentItemList);
+        List<Salary> foundObjects = new ArrayList<>();
+        foundEntities.forEach(each -> foundObjects.add(new Salary(each)));
+        return foundObjects;
+    }
+
+    /** POST **/
+    public Salary post(final Salary object, final boolean force) throws Exception {
+        /* Validate "Existence" */
+        if (!force && object.exists(salaryRepository)) {
+            throw new Exception("登録済みです。[" + object.getMonth() + " " + object.getPaymentItem() + "]");
+        }
+        /* Save */
+        final SalaryEntity saveEntity = object.convertToEntity();
+        final Salary savedObject = new Salary(salaryRepository.save(saveEntity));
+        return savedObject;
+    }
+
+    /** POST List **/
+    public List<Salary> post(final List<Salary> objects, final boolean force) throws Exception {
+        /* Validate "Existence" */
+        if (!force) {
+            for (Salary object : objects) {
+                if (object.exists(salaryRepository)) {
+                    throw new Exception("登録済みのデータが存在します。");
+                }
             }
         }
-        return true;
-    }
-    public List<Salary> addList(
-            final String createdBy,
-            final List<SalaryInput> dataList
-    ) throws Exception {
-        final Date timestamp = new Date();
-        List<Salary> objects = new ArrayList<>();
-        // Validate list
-        if (!validateExistence(dataList))
-            throw new Exception("登録済みのデータが存在します。");
-        for (SalaryInput data : dataList) {
-            final Salary object = new Salary(
-                    timestamp,
-                    createdBy,
-                    timestamp,
-                    createdBy,
-                    0,
-                    data.month(),
-                    data.paymentType(),
-                    data.money()
-            );
-            final SalaryEntity entity = object.covertToEntity();
-            // Save
-            salaryRepository.save(entity);
-            objects.add(object);
-        }
-        return objects;
+        /* Save */
+        List<SalaryEntity> saveEntities = new ArrayList<>();
+        objects.forEach(object -> {
+            saveEntities.add(object.convertToEntity());
+        });
+        final List<SalaryEntity> savedEntities = salaryRepository.saveAll(saveEntities);
+        List<Salary> savedObjects = new ArrayList<>();
+        savedEntities.forEach(each -> savedObjects.add(new Salary(each)));
+        return savedObjects;
     }
 
-    /** Add List (Force) **/
-    public List<Salary> addListForce(
-            final String createdBy,
-            final List<SalaryInput> dataList
-    ) throws Exception {
-        final Date timestamp = new Date();
-        List<Salary> objects = new ArrayList<>();
-        for (SalaryInput data : dataList) {
-            final Salary object = new Salary(
-                    timestamp,
-                    createdBy,
-                    timestamp,
-                    createdBy,
-                    0,
-                    data.month(),
-                    data.paymentType(),
-                    data.money()
-            );
-            final SalaryEntity entity = object.covertToEntity();
-            // Save
-            salaryRepository.save(entity);
-            objects.add(object);
+    /** PUT **/
+    public Salary put(final Salary object) throws Exception {
+        /* Validate "Existence" */
+        if (!object.exists(salaryRepository)) {
+            throw new Exception("登録されていません。[" + object.getMonth() + " " + object.getPaymentItem() + "]");
         }
-        return objects;
+        /* Validate "Exclusive flag" */
+        final Salary origin = this.getById(object);
+        if (object.getExclusiveFlag() != origin.getExclusiveFlag()) {
+            throw new RuntimeException("他の人が更新しています。[" + object.getMonth() + " " + object.getPaymentItem() + "]");
+        }
+        /* Save */
+        final SalaryEntity saveEntity = object.countUpExclusiveFlag().convertToEntity();
+        final Salary savedObject = new Salary(salaryRepository.save(saveEntity));
+        return savedObject;
     }
 
-    /**
-     * CRUD: Update
-     */
-
-    /** Save **/
-    public Salary save(
-            final String updatedBy,
-            final Salary data
-    ) throws Exception {
-        final Date timestamp = new Date();
-        final Salary object = new Salary(
-                data.getCreatedAt(),
-                data.getCreatedBy(),
-                timestamp,
-                updatedBy,
-                data.getExclusiveFlag() + 1,
-                data.getMonth(),
-                data.getPaymentType(),
-                data.getMoney()
-        );
-        final SalaryEntity entity = object.covertToEntity();
-        // Validate "Existence"
-        if (!existsById(entity.getMonth(), entity.getPaymentType())) {
-            throw new Exception("登録されていません。[" + entity.getMonth() + " " + entity.getPaymentType() + "]");
+    /** DELETE **/
+    public Salary delete(final Salary object) throws Exception {
+        /* Validate "Existence" */
+        if (!object.exists(salaryRepository)) {
+            throw new Exception("登録されていません。[" + object.getMonth() + " " + object.getPaymentItem() + "]");
         }
-        // Validate "Exclusion"
-        final SalaryEntity origin = findById(entity.getMonth(), entity.getPaymentType()).covertToEntity();
-        if (data.getExclusiveFlag() != origin.getExclusiveFlag()) {
-            throw new RuntimeException("他の人が更新しています。[" + entity.getMonth() + " " + entity.getPaymentType() + "]");
-        }
-        // Save
-        return new Salary(salaryRepository.save(entity));
-    }
-
-    /**
-     * CRUD: Delete
-     */
-
-    /** Delete By PrimaryKey **/
-    public Salary deleteById(final String month, final String paymentType) throws Exception {
-        // Validate "Existence"
-        if (!existsById(month, paymentType)) {
-            throw new Exception("登録されていません。[" + month + " " + paymentType + "]");
-        }
-        // Delete
-        SalaryEntity entity = findById(month, paymentType).covertToEntity();
-        salaryRepository.delete(entity);
-        return new Salary(entity);
+        /* Delete */
+        SalaryEntity deleteEntity = this.getById(object).convertToEntity();
+        salaryRepository.delete(deleteEntity);
+        Salary deletedObject = new Salary(deleteEntity);
+        return deletedObject;
     }
 
 }

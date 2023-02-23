@@ -1,7 +1,9 @@
 package jp.fujino.SalaryDataManager.domain.object;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jp.fujino.SalaryDataManager.domain.repository.SalaryRepository;
 import jp.fujino.SalaryDataManager.infrastructure.entity.SalaryEntity;
+import jp.fujino.SalaryDataManager.infrastructure.key.SalaryKey;
 import lombok.Data;
 
 import java.io.Serial;
@@ -21,16 +23,17 @@ public class Salary implements Serializable {
     @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss.SSS", timezone = "Asia/Tokyo")
     private final Date updatedAt;
     private final String updatedBy;
-    private final int exclusiveFlag;
+    private final Integer exclusiveFlag;
     private final String month;
-    private final String paymentType;
+    private final Boolean deduction;
+    private final String paymentItem;
     private final Money money;
 
     /** Constructor **/
     public Salary(
             final SalaryEntity entity
     ) throws IllegalArgumentException {
-        // "month" Validation
+        // Validate
         this.validateMonth(entity.getMonth());
         // Initialize
         this.createdAt = entity.getCreatedAt();
@@ -39,7 +42,8 @@ public class Salary implements Serializable {
         this.updatedBy = entity.getUpdatedBy();
         this.exclusiveFlag = entity.getExclusiveFlag();
         this.month = entity.getMonth();
-        this.paymentType = entity.getPaymentType();
+        this.deduction = entity.getDeduction();
+        this.paymentItem = entity.getPaymentItem();
         this.money = new Money(entity.getAmount(), entity.getCurrencyCode());
     }
 
@@ -48,12 +52,13 @@ public class Salary implements Serializable {
             final String createdBy,
             final Date updatedAt,
             final String updatedBy,
-            final int exclusiveFlag,
+            final Integer exclusiveFlag,
             final String month,
-            final String paymentType,
+            final Boolean deduction,
+            final String paymentItem,
             final Money money
     ) throws IllegalArgumentException {
-        // "month" Validation
+        // Validate
         this.validateMonth(month);
         // Initialize
         this.createdAt = createdAt;
@@ -62,20 +67,13 @@ public class Salary implements Serializable {
         this.updatedBy = updatedBy;
         this.exclusiveFlag = exclusiveFlag;
         this.month = month;
-        this.paymentType = paymentType;
+        this.deduction = deduction;
+        this.paymentItem = paymentItem;
         this.money = money;
     }
 
     /** Method **/
-    private void validateMonth(final String month) {
-        try {
-            (new SimpleDateFormat("yyyyMM")).parse(month);
-        } catch (Exception e) {
-            throw new IllegalArgumentException("フォーマットが不正です。[month:YYYYMM]");
-        }
-    }
-
-    public SalaryEntity covertToEntity() {
+    public SalaryEntity convertToEntity() {
         return new SalaryEntity(
                 this.getCreatedAt(),
                 this.getCreatedBy(),
@@ -83,10 +81,38 @@ public class Salary implements Serializable {
                 this.getUpdatedBy(),
                 this.getExclusiveFlag(),
                 this.getMonth(),
-                this.getPaymentType(),
+                this.getDeduction(),
+                this.getPaymentItem(),
                 this.getMoney().amount(),
                 this.getMoney().currencyCode()
         );
+    }
+
+    public boolean exists(final SalaryRepository salaryRepository) {
+        SalaryKey key = new SalaryKey(this.getMonth(), this.getDeduction(), this.getPaymentItem());
+        return salaryRepository.existsById(key);
+    }
+
+    public Salary countUpExclusiveFlag() {
+        return new Salary(
+                this.getCreatedAt(),
+                this.getCreatedBy(),
+                this.getUpdatedAt(),
+                this.getUpdatedBy(),
+                this.getExclusiveFlag() + 1,
+                this.getMonth(),
+                this.getDeduction(),
+                this.getPaymentItem(),
+                this.getMoney()
+        );
+    }
+
+    private void validateMonth(final String month) {
+        try {
+            (new SimpleDateFormat("yyyyMM")).parse(month);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("フォーマットが不正です。[month:YYYYMM]");
+        }
     }
 
 }

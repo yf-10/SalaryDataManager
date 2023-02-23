@@ -1,15 +1,15 @@
 package jp.fujino.SalaryDataManager.application.controller;
 
 import jp.fujino.SalaryDataManager.application.resource.HttpResponseObject;
-import jp.fujino.SalaryDataManager.application.resource.SalaryInput;
-import jp.fujino.SalaryDataManager.domain.object.Money;
 import jp.fujino.SalaryDataManager.domain.object.Salary;
+import jp.fujino.SalaryDataManager.application.resource.SalaryModel;
 import jp.fujino.SalaryDataManager.domain.service.SalaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -26,121 +26,166 @@ public class SalaryController {
      * CRUD: Read
      */
 
-    /** Find by PrimaryKey **/
-    @GetMapping(value = "/findById")
-    public HttpResponseObject findById(
-            @RequestParam("month") final String month,
-            @RequestParam("paymentType") final String paymentType
+    /** GET by PrimaryKey **/
+    @GetMapping(value = "/getById")
+    public HttpResponseObject getById(
+            @RequestBody final SalaryModel inputModel
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
+            /* Convert to Object */
+            final Salary inputObject = inputModel.convToObjForGet();
+            /* Output Object */
+            final Salary outputObject = salaryService.getById(inputObject);
+            /* Convert to model */
+            final SalaryModel outputModel = SalaryModel.convToModel(outputObject);
+            /* Set response */
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.findById(month, paymentType));
+            response.setResponseData(outputModel);
         } catch (Exception e) {
+            /* Set response */
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
             response.setMessage(e.getMessage());
         }
         return response;
     }
 
-    /** Find by Month **/
-    @GetMapping(value = "/findByMonth")
-    public HttpResponseObject findByMonth(
+    /** GET by Month **/
+    @GetMapping(value = "/getByMonth")
+    public HttpResponseObject getByMonth(
             @RequestParam("month") final String month
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
+            /* Output Object */
+            final List<Salary> outputObjects = salaryService.getByMonth(month);
+            /* Convert to model */
+            final List<SalaryModel> outputModels = SalaryModel.convToModels(outputObjects);
+            /* Set response */
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.findByMonth(month));
+            response.setResponseData(outputModels);
         } catch (Exception e) {
+            /* Set response */
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
             response.setMessage(e.getMessage());
         }
         return response;
     }
 
-    /** Find by Month Between **/
-    @GetMapping(value = "/findByMonthBetween")
-    public HttpResponseObject findByMonthBetween(
-            @RequestParam("from") final String from,
-            @RequestParam("to") final String to
+    /** GET by Month Between **/
+    @GetMapping(value = "/getByMonthBetween")
+    public HttpResponseObject getByMonthBetween(
+            @RequestParam(value = "monthFrom") final String monthFrom,
+            @RequestParam("monthTo") final String monthTo
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
+            /* Output Object */
+            final List<Salary> outputObjects = salaryService.getByMonthBetween(monthFrom, monthTo);
+            /* Convert to model */
+            final List<SalaryModel> outputModels = SalaryModel.convToModels(outputObjects);
+            /* Set response */
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.findByMonthBetween(from, to));
+            response.setResponseData(outputModels);
         } catch (Exception e) {
+            /* Set response */
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
             response.setMessage(e.getMessage());
         }
         return response;
     }
 
-    /** Find by Month After **/
-    @GetMapping(value = "/findByMonthAfter")
-    public HttpResponseObject findByMonthAfter(
-            @RequestParam("month") final String month
+    /** GET by Month After **/
+    @GetMapping(value = "/getByMonthAfter")
+    public HttpResponseObject getByMonthAfter(
+            @RequestParam("monthFrom") final String monthFrom
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
+            /* Output Object */
+            final List<Salary> outputObjects = salaryService.getByMonthAfter(monthFrom);
+            /* Convert to model */
+            final List<SalaryModel> outputModels = SalaryModel.convToModels(outputObjects);
+            /* Set response */
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.findByMonthAfter(month));
+            response.setResponseData(outputModels);
         } catch (Exception e) {
+            /* Set response */
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
             response.setMessage(e.getMessage());
         }
         return response;
     }
 
-    /** Find by Month Before **/
-    @GetMapping(value = "/findByMonthBefore")
-    public HttpResponseObject findByMonthBefore(
-            @RequestParam("month") final String month
+    /** GET by Month Before **/
+    @GetMapping(value = "/getByMonthBefore")
+    public HttpResponseObject getByMonthBefore(
+            @RequestParam("monthTo") final String monthTo
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
+            /* Output Object */
+            final List<Salary> outputObjects = salaryService.getByMonthBefore(monthTo);
+            /* Convert to model */
+            final List<SalaryModel> outputModels = SalaryModel.convToModels(outputObjects);
+            /* Set response */
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.findByMonthBefore(month));
+            response.setResponseData(outputModels);
         } catch (Exception e) {
+            /* Set response */
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
             response.setMessage(e.getMessage());
         }
         return response;
     }
 
-    /** Find by PaymentType **/
-    @GetMapping(value = "/findByPaymentType")
-    public HttpResponseObject findByPaymentType(
-            @RequestParam("paymentType") final String paymentType
+    /** GET by PaymentItem **/
+    @GetMapping(value = "/getByPaymentItem")
+    public HttpResponseObject getByPaymentItem(
+            @RequestParam("deduction") final Boolean deduction,
+            @RequestParam("paymentItem") final String paymentItem
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
+            /* Output Object */
+            final List<Salary> outputObjects = salaryService.getByPaymentItem(deduction, paymentItem);
+            /* Convert to model */
+            final List<SalaryModel> outputModels = SalaryModel.convToModels(outputObjects);
+            /* Set response */
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.findByPaymentType(paymentType));
+            response.setResponseData(outputModels);
         } catch (Exception e) {
+            /* Set response */
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
             response.setMessage(e.getMessage());
         }
         return response;
     }
 
-    /** Find by PaymentType In **/
-    @GetMapping(value = "/findByPaymentTypeIn")
-    public HttpResponseObject findByPaymentTypeIn(
-            @RequestBody final List<String> paymentType
+    /** GET by PaymentItem In **/
+    @GetMapping(value = "/getByPaymentItemIn")
+    public HttpResponseObject findByPaymentItem(
+            @RequestParam("deduction") final Boolean deduction,
+            @RequestBody final List<String> paymentItemList
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
+            /* Output Object */
+            final List<Salary> outputObjects = salaryService.getByPaymentItem(deduction, paymentItemList);
+            /* Convert to model */
+            final List<SalaryModel> outputModels = SalaryModel.convToModels(outputObjects);
+            /* Set response */
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.findByPaymentTypeIn(paymentType));
+            response.setResponseData(outputModels);
         } catch (Exception e) {
+            /* Set response */
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
             response.setMessage(e.getMessage());
         }
@@ -151,87 +196,55 @@ public class SalaryController {
      * CRUD: Create
      */
 
-    /** Add **/
-    @PostMapping(value = "/add")
-    public HttpResponseObject add(
+    /** POST **/
+    @PostMapping(value = "/post")
+    public HttpResponseObject post(
+            @RequestBody final SalaryModel inputModel,
             @RequestParam(value = "createdBy", defaultValue = "Anonymous") final String createdBy,
-            @RequestParam(value = "month") final String month,
-            @RequestParam(value = "paymentType") final String paymentType,
-            @RequestParam(value = "amount") final int amount,
-            @RequestParam(value = "currencyCode") final String currencyCode
+            @RequestParam(value = "force", defaultValue = "false") final boolean force
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
+            /* Convert to Object */
+            final Salary inputObject = inputModel.convToObjForPost(createdBy);
+            /* Output Object */
+            final Salary outputObject = salaryService.post(inputObject, force);
+            /* Convert to Model */
+            final SalaryModel outputModel = SalaryModel.convToModel(outputObject);
+            /* Set response */
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.add(
-                    createdBy,
-                    new SalaryInput(month, paymentType, new Money(amount, currencyCode))
-            ));
+            response.setResponseData(outputModel);
         } catch (Exception e) {
+            /* Set response */
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
             response.setMessage(e.getMessage());
         }
         return response;
     }
 
-    /** Add JSON **/
-    @PostMapping(value = "/addJson")
-    public HttpResponseObject addJson(
+    /** POST All **/
+    @PostMapping(value = "/postAll")
+    public HttpResponseObject post(
+            @RequestBody final List<SalaryModel> inputModels,
             @RequestParam(value = "createdBy", defaultValue = "Anonymous") final String createdBy,
-            @RequestBody final SalaryInput data
+            @RequestParam(value = "force", defaultValue = "false") final boolean force
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
+            /* Convert to Object */
+            List<Salary> inputObjects = new ArrayList<>();
+            inputModels.forEach(each -> inputObjects.add(each.convToObjForPost(createdBy)));
+            /* Output Object */
+            final List<Salary> outputObjects = salaryService.post(inputObjects, force);
+            /* Convert to Model */
+            final List<SalaryModel> outputModels = SalaryModel.convToModels(outputObjects);
+            /* Set response */
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.add(
-                    createdBy,
-                    data
-            ));
+            response.setResponseData(outputModels);
         } catch (Exception e) {
-            response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
-            response.setMessage(e.getMessage());
-        }
-        return response;
-    }
-
-    /** Add List **/
-    @PostMapping(value = "/addList")
-    public HttpResponseObject addList(
-            @RequestParam(value = "createdBy", defaultValue = "Anonymous") final String createdBy,
-            @RequestBody final List<SalaryInput> dataList
-    ) {
-        HttpResponseObject response = new HttpResponseObject();
-        try {
-            response.setHttpStatus(HttpStatus.OK);
-            response.setMessage("Success");
-            response.setResponseData(salaryService.addList(
-                    createdBy,
-                    dataList
-            ));
-        } catch (Exception e) {
-            response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
-            response.setMessage(e.getMessage());
-        }
-        return response;
-    }
-
-    /** Add List (Force) **/
-    @PostMapping(value = "/addListForce")
-    public HttpResponseObject addListForce(
-            @RequestParam(value = "createdBy", defaultValue = "Anonymous") final String createdBy,
-            @RequestBody final List<SalaryInput> dataList
-    ) {
-        HttpResponseObject response = new HttpResponseObject();
-        try {
-            response.setHttpStatus(HttpStatus.OK);
-            response.setMessage("Success");
-            response.setResponseData(salaryService.addListForce(
-                    createdBy,
-                    dataList
-            ));
-        } catch (Exception e) {
+            /* Set response */
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
             response.setMessage(e.getMessage());
         }
@@ -242,18 +255,26 @@ public class SalaryController {
      * CRUD: Update
      */
 
-    /** Save **/
-    @PostMapping(value = "/save")
-    public HttpResponseObject save(
-            @RequestParam(value = "updatedBy", defaultValue = "Anonymous") final String updatedBy,
-            @RequestBody final Salary data
+    /** PUT **/
+    @PutMapping(value = "/put")
+    public HttpResponseObject put(
+            @RequestBody final SalaryModel inputModel,
+            @RequestParam(value = "updatedBy", defaultValue = "Anonymous") final String updatedBy
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
+            /* Convert to Object */
+            final Salary inputObject = inputModel.convToObjForPut(updatedBy);
+            /* Output Object */
+            final Salary outputObject = salaryService.put(inputObject);
+            /* Convert to Model */
+            final SalaryModel outputModel = SalaryModel.convToModel(outputObject);
+            /* Set response */
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.save(updatedBy, data));
+            response.setResponseData(outputModel);
         } catch (Exception e) {
+            /* Set response */
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
             response.setMessage(e.getMessage());
         }
@@ -265,17 +286,24 @@ public class SalaryController {
      */
 
     /** Delete By PrimaryKey **/
-    @PostMapping(value = "/deleteById")
-    public HttpResponseObject deleteById(
-            @RequestParam(value = "month") final String month,
-            @RequestParam(value = "paymentType") final String paymentType
+    @DeleteMapping(value = "/delete")
+    public HttpResponseObject delete(
+            @RequestBody final SalaryModel inputModel
     ) {
         HttpResponseObject response = new HttpResponseObject();
         try {
+            /* Convert to Object */
+            final Salary inputObject = inputModel.convToObjForDelete();
+            /* Output Object */
+            final Salary outputObject = salaryService.delete(inputObject);
+            /* Convert to Model */
+            final SalaryModel outputModel = SalaryModel.convToModel(outputObject);
+            /* Set response */
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
-            response.setResponseData(salaryService.deleteById(month, paymentType));
+            response.setResponseData(outputModel);
         } catch (Exception e) {
+            /* Set response */
             response.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
             response.setMessage(e.getMessage());
         }

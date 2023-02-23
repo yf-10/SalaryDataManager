@@ -7,6 +7,8 @@
 
 ### HTTP Request Example
 ```
+/salary
+
 [GET]
 curl -X GET "http://localhost:7777/salary/getByMonth?month=202302"
 curl -X GET "http://localhost:7777/salary/getByMonthBetween?monthFrom=202102&monthTo=202312"

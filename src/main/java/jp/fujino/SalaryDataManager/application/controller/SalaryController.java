@@ -34,11 +34,11 @@ public class SalaryController {
         HttpResponseObject response = new HttpResponseObject();
         try {
             /* Convert to Object */
-            final Salary inputObject = inputModel.convToObjForGet();
+            final Salary inputObject = inputModel.modelToObjectGet();
             /* Output Object */
             final Salary outputObject = salaryService.getById(inputObject);
-            /* Convert to model */
-            final SalaryModel outputModel = SalaryModel.convToModel(outputObject);
+            /* Convert to Model */
+            final SalaryModel outputModel = SalaryModel.convertToModel(outputObject);
             /* Set response */
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
@@ -60,8 +60,8 @@ public class SalaryController {
         try {
             /* Output Object */
             final List<Salary> outputObjects = salaryService.getByMonth(month);
-            /* Convert to model */
-            final List<SalaryModel> outputModels = SalaryModel.convToModels(outputObjects);
+            /* Convert to Model */
+            final List<SalaryModel> outputModels = SalaryModel.convertToModels(outputObjects);
             /* Set response */
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
@@ -84,8 +84,8 @@ public class SalaryController {
         try {
             /* Output Object */
             final List<Salary> outputObjects = salaryService.getByMonthBetween(monthFrom, monthTo);
-            /* Convert to model */
-            final List<SalaryModel> outputModels = SalaryModel.convToModels(outputObjects);
+            /* Convert to Model */
+            final List<SalaryModel> outputModels = SalaryModel.convertToModels(outputObjects);
             /* Set response */
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
@@ -107,8 +107,8 @@ public class SalaryController {
         try {
             /* Output Object */
             final List<Salary> outputObjects = salaryService.getByMonthAfter(monthFrom);
-            /* Convert to model */
-            final List<SalaryModel> outputModels = SalaryModel.convToModels(outputObjects);
+            /* Convert to Model */
+            final List<SalaryModel> outputModels = SalaryModel.convertToModels(outputObjects);
             /* Set response */
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
@@ -130,8 +130,8 @@ public class SalaryController {
         try {
             /* Output Object */
             final List<Salary> outputObjects = salaryService.getByMonthBefore(monthTo);
-            /* Convert to model */
-            final List<SalaryModel> outputModels = SalaryModel.convToModels(outputObjects);
+            /* Convert to Model */
+            final List<SalaryModel> outputModels = SalaryModel.convertToModels(outputObjects);
             /* Set response */
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
@@ -154,8 +154,8 @@ public class SalaryController {
         try {
             /* Output Object */
             final List<Salary> outputObjects = salaryService.getByPaymentItem(deduction, paymentItem);
-            /* Convert to model */
-            final List<SalaryModel> outputModels = SalaryModel.convToModels(outputObjects);
+            /* Convert to Model */
+            final List<SalaryModel> outputModels = SalaryModel.convertToModels(outputObjects);
             /* Set response */
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
@@ -178,8 +178,8 @@ public class SalaryController {
         try {
             /* Output Object */
             final List<Salary> outputObjects = salaryService.getByPaymentItem(deduction, paymentItemList);
-            /* Convert to model */
-            final List<SalaryModel> outputModels = SalaryModel.convToModels(outputObjects);
+            /* Convert to Model */
+            final List<SalaryModel> outputModels = SalaryModel.convertToModels(outputObjects);
             /* Set response */
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
@@ -206,11 +206,11 @@ public class SalaryController {
         HttpResponseObject response = new HttpResponseObject();
         try {
             /* Convert to Object */
-            final Salary inputObject = inputModel.convToObjForPost(createdBy);
+            final Salary inputObject = inputModel.modelToObjectPost(createdBy);
             /* Output Object */
             final Salary outputObject = salaryService.post(inputObject, force);
             /* Convert to Model */
-            final SalaryModel outputModel = SalaryModel.convToModel(outputObject);
+            final SalaryModel outputModel = SalaryModel.convertToModel(outputObject);
             /* Set response */
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
@@ -234,11 +234,11 @@ public class SalaryController {
         try {
             /* Convert to Object */
             List<Salary> inputObjects = new ArrayList<>();
-            inputModels.forEach(each -> inputObjects.add(each.convToObjForPost(createdBy)));
+            inputModels.forEach(each -> inputObjects.add(each.modelToObjectPost(createdBy)));
             /* Output Object */
             final List<Salary> outputObjects = salaryService.post(inputObjects, force);
             /* Convert to Model */
-            final List<SalaryModel> outputModels = SalaryModel.convToModels(outputObjects);
+            final List<SalaryModel> outputModels = SalaryModel.convertToModels(outputObjects);
             /* Set response */
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
@@ -264,11 +264,11 @@ public class SalaryController {
         HttpResponseObject response = new HttpResponseObject();
         try {
             /* Convert to Object */
-            final Salary inputObject = inputModel.convToObjForPut(updatedBy);
+            final Salary inputObject = inputModel.modelToObjectPut(updatedBy);
             /* Output Object */
             final Salary outputObject = salaryService.put(inputObject);
             /* Convert to Model */
-            final SalaryModel outputModel = SalaryModel.convToModel(outputObject);
+            final SalaryModel outputModel = SalaryModel.convertToModel(outputObject);
             /* Set response */
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");
@@ -293,11 +293,11 @@ public class SalaryController {
         HttpResponseObject response = new HttpResponseObject();
         try {
             /* Convert to Object */
-            final Salary inputObject = inputModel.convToObjForDelete();
+            final Salary inputObject = inputModel.modelToObjectDelete();
             /* Output Object */
             final Salary outputObject = salaryService.delete(inputObject);
             /* Convert to Model */
-            final SalaryModel outputModel = SalaryModel.convToModel(outputObject);
+            final SalaryModel outputModel = SalaryModel.convertToModel(outputObject);
             /* Set response */
             response.setHttpStatus(HttpStatus.OK);
             response.setMessage("Success");

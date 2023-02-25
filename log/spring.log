@@ -1,117 +1,231 @@
-2023-02-23T23:08:03.177+09:00  WARN 3376 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-02-23T23:08:03.341+09:00 DEBUG 3376 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2023-02-23T23:08:03.449+09:00 DEBUG 3376 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 13 mappings in 'requestMappingHandlerMapping'
-2023-02-23T23:08:03.479+09:00 DEBUG 3376 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
-2023-02-23T23:08:03.493+09:00 DEBUG 3376 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
-2023-02-23T23:08:23.593+09:00  INFO 3376 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-02-23T23:08:23.594+09:00 DEBUG 3376 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
-2023-02-23T23:08:23.594+09:00 DEBUG 3376 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
-2023-02-23T23:08:23.595+09:00 DEBUG 3376 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
-2023-02-23T23:08:23.596+09:00 DEBUG 3376 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@2ec156fb
-2023-02-23T23:08:23.596+09:00 DEBUG 3376 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@115a7e51
-2023-02-23T23:08:23.596+09:00 DEBUG 3376 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
-2023-02-23T23:08:23.597+09:00  INFO 3376 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
-2023-02-23T23:08:23.606+09:00 DEBUG 3376 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/salary/getByMonthBetween?monthFrom=202102&monthTo=202312", parameters={masked}
-2023-02-23T23:08:23.619+09:00 DEBUG 3376 --- [http-nio-7777-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to jp.fujino.SalaryDataManager.application.controller.SalaryController#getByMonthBetween(String, String)
-2023-02-23T23:08:23.851+09:00 DEBUG 3376 --- [http-nio-7777-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json]
-2023-02-23T23:08:23.906+09:00 DEBUG 3376 --- [http-nio-7777-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [jp.fujino.SalaryDataManager.application.resource.HttpResponseObject@5a846503]
-2023-02-23T23:08:23.934+09:00 DEBUG 3376 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2023-02-23T23:16:35.184+09:00  WARN 23924 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-02-23T23:16:35.359+09:00 DEBUG 23924 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2023-02-23T23:16:35.481+09:00 DEBUG 23924 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 13 mappings in 'requestMappingHandlerMapping'
-2023-02-23T23:16:35.509+09:00 DEBUG 23924 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
-2023-02-23T23:16:35.519+09:00 DEBUG 23924 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
-2023-02-23T23:16:50.557+09:00  INFO 23924 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-02-23T23:16:50.557+09:00 DEBUG 23924 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
-2023-02-23T23:16:50.558+09:00 DEBUG 23924 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
-2023-02-23T23:16:50.558+09:00 DEBUG 23924 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
-2023-02-23T23:16:50.559+09:00 DEBUG 23924 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@54033a65
-2023-02-23T23:16:50.559+09:00 DEBUG 23924 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@56976b8b
-2023-02-23T23:16:50.559+09:00 DEBUG 23924 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
-2023-02-23T23:16:50.560+09:00  INFO 23924 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
-2023-02-23T23:16:50.568+09:00 DEBUG 23924 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/salary/getByMonthBetween?monthFrom=202102&monthTo=202312", parameters={masked}
-2023-02-23T23:16:50.580+09:00 DEBUG 23924 --- [http-nio-7777-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to jp.fujino.SalaryDataManager.application.controller.SalaryController#getByMonthBetween(String, String)
-2023-02-23T23:16:50.914+09:00 DEBUG 23924 --- [http-nio-7777-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json]
-2023-02-23T23:16:50.955+09:00 DEBUG 23924 --- [http-nio-7777-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [jp.fujino.SalaryDataManager.application.resource.HttpResponseObject@3e30b028]
-2023-02-23T23:16:50.996+09:00 DEBUG 23924 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2023-02-23T23:17:27.266+09:00  WARN 22816 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-02-23T23:17:27.424+09:00 DEBUG 22816 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2023-02-23T23:17:27.557+09:00 DEBUG 22816 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 13 mappings in 'requestMappingHandlerMapping'
-2023-02-23T23:17:27.603+09:00 DEBUG 22816 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
-2023-02-23T23:17:27.614+09:00 DEBUG 22816 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
-2023-02-23T23:17:50.914+09:00  INFO 22816 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-02-23T23:17:50.915+09:00 DEBUG 22816 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
-2023-02-23T23:17:50.915+09:00 DEBUG 22816 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
-2023-02-23T23:17:50.915+09:00 DEBUG 22816 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
-2023-02-23T23:17:50.916+09:00 DEBUG 22816 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@62581ef6
-2023-02-23T23:17:50.917+09:00 DEBUG 22816 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@77e1dacd
-2023-02-23T23:17:50.917+09:00 DEBUG 22816 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
-2023-02-23T23:17:50.918+09:00  INFO 22816 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
-2023-02-23T23:17:50.927+09:00 DEBUG 22816 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/salary/getByMonthBetween?monthFrom=202102&monthTo=202312", parameters={masked}
-2023-02-23T23:17:50.940+09:00 DEBUG 22816 --- [http-nio-7777-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to jp.fujino.SalaryDataManager.application.controller.SalaryController#getByMonthBetween(String, String)
-2023-02-23T23:17:51.265+09:00 DEBUG 22816 --- [http-nio-7777-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json]
-2023-02-23T23:17:51.307+09:00 DEBUG 22816 --- [http-nio-7777-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [jp.fujino.SalaryDataManager.application.resource.HttpResponseObject@3e30b028]
-2023-02-23T23:17:51.360+09:00 DEBUG 22816 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2023-02-23T23:18:31.161+09:00  WARN 24012 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-02-23T23:18:52.120+09:00  INFO 24012 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-02-23T23:18:52.122+09:00  INFO 24012 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2023-02-23T23:19:24.804+09:00  WARN 22244 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-02-23T23:19:35.068+09:00  INFO 22244 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-02-23T23:19:35.070+09:00  INFO 22244 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2023-02-23T23:20:02.355+09:00  INFO 19496 --- [main] j.f.S.SalaryDataManagerApplication       : Starting SalaryDataManagerApplication using Java 17.0.1 with PID 19496 (C:\Work\develop\SalaryDataManager\02-SpringAPI\SalaryDataManager\build\classes\java\main started by Home in C:\Work\develop\SalaryDataManager\02-SpringAPI\SalaryDataManager)
-2023-02-23T23:20:02.384+09:00  INFO 19496 --- [main] j.f.S.SalaryDataManagerApplication       : No active profile set, falling back to 1 default profile: "default"
-2023-02-23T23:20:04.111+09:00  INFO 19496 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-02-23T23:20:04.218+09:00  INFO 19496 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 88 ms. Found 1 JPA repository interfaces.
-2023-02-23T23:20:05.186+09:00  INFO 19496 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7777 (http)
-2023-02-23T23:20:05.198+09:00  INFO 19496 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-02-23T23:20:05.198+09:00  INFO 19496 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.5]
-2023-02-23T23:20:05.559+09:00  INFO 19496 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-02-23T23:20:05.564+09:00  INFO 19496 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2441 ms
-2023-02-23T23:20:06.484+09:00  INFO 19496 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-02-23T23:20:06.664+09:00  INFO 19496 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@d3f4505
-2023-02-23T23:20:06.665+09:00  INFO 19496 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-02-23T23:20:07.337+09:00  INFO 19496 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2023-02-23T23:20:08.374+09:00  INFO 19496 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-02-23T23:20:09.063+09:00  WARN 19496 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-02-23T23:20:09.239+09:00 DEBUG 19496 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2023-02-23T23:20:09.362+09:00 DEBUG 19496 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 13 mappings in 'requestMappingHandlerMapping'
-2023-02-23T23:20:09.392+09:00 DEBUG 19496 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
-2023-02-23T23:20:09.406+09:00 DEBUG 19496 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
-2023-02-23T23:20:10.338+09:00  INFO 19496 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7777 (http) with context path ''
-2023-02-23T23:20:10.429+09:00  INFO 19496 --- [main] j.f.S.SalaryDataManagerApplication       : Started SalaryDataManagerApplication in 8.778 seconds (process running for 9.284)
-2023-02-23T23:20:13.750+09:00  INFO 19496 --- [http-nio-7777-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-02-23T23:20:13.751+09:00  INFO 19496 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-02-23T23:20:13.751+09:00 DEBUG 19496 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
-2023-02-23T23:20:13.752+09:00 DEBUG 19496 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
-2023-02-23T23:20:13.752+09:00 DEBUG 19496 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
-2023-02-23T23:20:13.753+09:00 DEBUG 19496 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@40b8158d
-2023-02-23T23:20:13.753+09:00 DEBUG 19496 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@7a522157
-2023-02-23T23:20:13.754+09:00 DEBUG 19496 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
-2023-02-23T23:20:13.754+09:00  INFO 19496 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
-2023-02-23T23:20:13.763+09:00 DEBUG 19496 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/salary/getByMonthBetween?monthFrom=202102&monthTo=202312", parameters={masked}
-2023-02-23T23:20:13.775+09:00 DEBUG 19496 --- [http-nio-7777-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to jp.fujino.SalaryDataManager.application.controller.SalaryController#getByMonthBetween(String, String)
-2023-02-23T23:20:13.776+09:00  INFO 19496 --- [http-nio-7777-exec-1] j.f.S.i.LoggingHandlerInterceptor        : [127.0.0.1] GET  /salary/getByMonthBetween
-2023-02-23T23:20:14.053+09:00 DEBUG 19496 --- [http-nio-7777-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json]
-2023-02-23T23:20:14.097+09:00 DEBUG 19496 --- [http-nio-7777-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [jp.fujino.SalaryDataManager.application.resource.HttpResponseObject@2ffe08d1]
-2023-02-23T23:20:14.143+09:00 DEBUG 19496 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2023-02-23T23:20:44.370+09:00  INFO 6492 --- [main] j.f.S.SalaryDataManagerApplication       : Starting SalaryDataManagerApplication using Java 17.0.1 with PID 6492 (C:\Work\develop\SalaryDataManager\02-SpringAPI\SalaryDataManager\build\classes\java\main started by Home in C:\Work\develop\SalaryDataManager\02-SpringAPI\SalaryDataManager)
-2023-02-23T23:20:44.377+09:00  INFO 6492 --- [main] j.f.S.SalaryDataManagerApplication       : No active profile set, falling back to 1 default profile: "default"
-2023-02-23T23:20:45.362+09:00  INFO 6492 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-02-23T23:20:45.474+09:00  INFO 6492 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 92 ms. Found 1 JPA repository interfaces.
-2023-02-23T23:20:47.351+09:00  INFO 6492 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7777 (http)
-2023-02-23T23:20:47.373+09:00  INFO 6492 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-02-23T23:20:47.373+09:00  INFO 6492 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.5]
-2023-02-23T23:20:47.512+09:00  INFO 6492 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-02-23T23:20:47.513+09:00  INFO 6492 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3015 ms
-2023-02-23T23:20:47.733+09:00  INFO 6492 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-02-23T23:20:47.960+09:00  INFO 6492 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@b67cc70
-2023-02-23T23:20:47.962+09:00  INFO 6492 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-02-23T23:20:48.690+09:00  INFO 6492 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2023-02-23T23:20:49.656+09:00  INFO 6492 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-02-23T23:20:51.221+09:00  WARN 6492 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-02-23T23:20:51.685+09:00  INFO 6492 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7777 (http) with context path ''
-2023-02-23T23:20:51.706+09:00  INFO 6492 --- [main] j.f.S.SalaryDataManagerApplication       : Started SalaryDataManagerApplication in 7.979 seconds (process running for 8.481)
-2023-02-23T23:21:01.707+09:00  INFO 6492 --- [http-nio-7777-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-02-23T23:21:01.707+09:00  INFO 6492 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-02-23T23:21:01.708+09:00  INFO 6492 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2023-02-23T23:21:01.733+09:00  INFO 6492 --- [http-nio-7777-exec-1] j.f.S.i.LoggingHandlerInterceptor        : [127.0.0.1] GET  /salary/getByMonthBetween
+2023-02-25T22:54:59.867+09:00  INFO 7888 --- [main] j.f.S.SalaryDataManagerApplication       : Starting SalaryDataManagerApplication using Java 17.0.1 with PID 7888 (C:\Work\develop\SalaryDataManager\02-SpringAPI\SalaryDataManager\build\classes\java\main started by Home in C:\Work\develop\SalaryDataManager\02-SpringAPI\SalaryDataManager)
+2023-02-25T22:54:59.888+09:00  INFO 7888 --- [main] j.f.S.SalaryDataManagerApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-02-25T22:55:01.294+09:00  INFO 7888 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-02-25T22:55:01.396+09:00  INFO 7888 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 82 ms. Found 1 JPA repository interfaces.
+2023-02-25T22:55:02.841+09:00  INFO 7888 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7777 (http)
+2023-02-25T22:55:02.856+09:00  INFO 7888 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-02-25T22:55:02.856+09:00  INFO 7888 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.5]
+2023-02-25T22:55:03.045+09:00  INFO 7888 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-02-25T22:55:03.046+09:00  INFO 7888 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2946 ms
+2023-02-25T22:55:03.338+09:00  INFO 7888 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-02-25T22:55:04.447+09:00 ERROR 7888 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+
+org.postgresql.util.PSQLException: localhost:5432 への接続が拒絶されました。ホスト名とポート番号が正しいことと、postmaster がTCP/IP接続を受け付けていることを確認してください。
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:319) ~[postgresql-42.5.1.jar:42.5.1]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49) ~[postgresql-42.5.1.jar:42.5.1]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:247) ~[postgresql-42.5.1.jar:42.5.1]
+	at org.postgresql.Driver.makeConnection(Driver.java:434) ~[postgresql-42.5.1.jar:42.5.1]
+	at org.postgresql.Driver.connect(Driver.java:291) ~[postgresql-42.5.1.jar:42.5.1]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-5.0.1.jar:na]
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:159) ~[spring-jdbc-6.0.4.jar:6.0.4]
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:117) ~[spring-jdbc-6.0.4.jar:6.0.4]
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80) ~[spring-jdbc-6.0.4.jar:6.0.4]
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:330) ~[spring-jdbc-6.0.4.jar:6.0.4]
+	at org.springframework.boot.jdbc.EmbeddedDatabaseConnection.isEmbedded(EmbeddedDatabaseConnection.java:166) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateDefaultDdlAutoProvider.getDefaultDdlAuto(HibernateDefaultDdlAutoProvider.java:42) ~[spring-boot-autoconfigure-3.0.2.jar:3.0.2]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration.lambda$getVendorProperties$1(HibernateJpaConfiguration.java:129) ~[spring-boot-autoconfigure-3.0.2.jar:3.0.2]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateSettings.getDdlAuto(HibernateSettings.java:41) ~[spring-boot-autoconfigure-3.0.2.jar:3.0.2]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties.determineDdlAuto(HibernateProperties.java:118) ~[spring-boot-autoconfigure-3.0.2.jar:3.0.2]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties.getAdditionalProperties(HibernateProperties.java:87) ~[spring-boot-autoconfigure-3.0.2.jar:3.0.2]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties.determineHibernateProperties(HibernateProperties.java:80) ~[spring-boot-autoconfigure-3.0.2.jar:3.0.2]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration.getVendorProperties(HibernateJpaConfiguration.java:131) ~[spring-boot-autoconfigure-3.0.2.jar:3.0.2]
+	at org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration.entityManagerFactory(JpaBaseConfiguration.java:131) ~[spring-boot-autoconfigure-3.0.2.jar:3.0.2]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:139) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:645) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1324) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1161) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1130) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:905) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291) ~[spring-boot-3.0.2.jar:3.0.2]
+	at jp.fujino.SalaryDataManager.SalaryDataManagerApplication.main(SalaryDataManagerApplication.java:10) ~[main/:na]
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:633) ~[na:na]
+	at org.postgresql.core.PGStream.createSocket(PGStream.java:241) ~[postgresql-42.5.1.jar:42.5.1]
+	at org.postgresql.core.PGStream.<init>(PGStream.java:98) ~[postgresql-42.5.1.jar:42.5.1]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:109) ~[postgresql-42.5.1.jar:42.5.1]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:235) ~[postgresql-42.5.1.jar:42.5.1]
+	... 49 common frames omitted
+
+2023-02-25T22:55:05.037+09:00  INFO 7888 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-02-25T22:55:06.042+09:00 ERROR 7888 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+
+org.postgresql.util.PSQLException: localhost:5432 への接続が拒絶されました。ホスト名とポート番号が正しいことと、postmaster がTCP/IP接続を受け付けていることを確認してください。
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:319) ~[postgresql-42.5.1.jar:42.5.1]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49) ~[postgresql-42.5.1.jar:42.5.1]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:247) ~[postgresql-42.5.1.jar:42.5.1]
+	at org.postgresql.Driver.makeConnection(Driver.java:434) ~[postgresql-42.5.1.jar:42.5.1]
+	at org.postgresql.Driver.connect(Driver.java:291) ~[postgresql-42.5.1.jar:42.5.1]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-5.0.1.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:284) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:177) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:36) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:119) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:255) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:230) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:207) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:44) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:218) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:191) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:138) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1350) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1421) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66) ~[spring-orm-6.0.4.jar:6.0.4]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376) ~[spring-orm-6.0.4.jar:6.0.4]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.0.4.jar:6.0.4]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.0.4.jar:6.0.4]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352) ~[spring-orm-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1797) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1747) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1130) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:905) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291) ~[spring-boot-3.0.2.jar:3.0.2]
+	at jp.fujino.SalaryDataManager.SalaryDataManagerApplication.main(SalaryDataManagerApplication.java:10) ~[main/:na]
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:633) ~[na:na]
+	at org.postgresql.core.PGStream.createSocket(PGStream.java:241) ~[postgresql-42.5.1.jar:42.5.1]
+	at org.postgresql.core.PGStream.<init>(PGStream.java:98) ~[postgresql-42.5.1.jar:42.5.1]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:109) ~[postgresql-42.5.1.jar:42.5.1]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:235) ~[postgresql-42.5.1.jar:42.5.1]
+	... 48 common frames omitted
+
+2023-02-25T22:55:06.052+09:00 ERROR 7888 --- [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+2023-02-25T22:55:06.053+09:00  WARN 7888 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+2023-02-25T22:55:06.057+09:00  INFO 7888 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-02-25T22:55:06.072+09:00  INFO 7888 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2023-02-25T22:55:06.093+09:00 ERROR 7888 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1751) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1130) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:905) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291) ~[spring-boot-3.0.2.jar:3.0.2]
+	at jp.fujino.SalaryDataManager.SalaryDataManagerApplication.main(SalaryDataManagerApplication.java:10) ~[main/:na]
+Caused by: org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:267) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:230) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:207) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:44) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:218) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:191) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:138) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1350) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1421) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66) ~[spring-orm-6.0.4.jar:6.0.4]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376) ~[spring-orm-6.0.4.jar:6.0.4]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.0.4.jar:6.0.4]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.0.4.jar:6.0.4]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352) ~[spring-orm-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1797) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1747) ~[spring-beans-6.0.4.jar:6.0.4]
+	... 16 common frames omitted
+Caused by: org.hibernate.HibernateException: Unable to determine Dialect without JDBC metadata (please set 'javax.persistence.jdbc.url', 'hibernate.connection.url', or 'hibernate.dialect')
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.determineDialect(DialectFactoryImpl.java:147) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.buildDialect(DialectFactoryImpl.java:60) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:244) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:36) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:119) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:255) ~[hibernate-core-6.1.6.Final.jar:6.1.6.Final]
+	... 31 common frames omitted
+
+2023-02-25T22:55:21.963+09:00  INFO 6904 --- [main] j.f.S.SalaryDataManagerApplication       : Starting SalaryDataManagerApplication using Java 17.0.1 with PID 6904 (C:\Work\develop\SalaryDataManager\02-SpringAPI\SalaryDataManager\build\classes\java\main started by Home in C:\Work\develop\SalaryDataManager\02-SpringAPI\SalaryDataManager)
+2023-02-25T22:55:21.968+09:00  INFO 6904 --- [main] j.f.S.SalaryDataManagerApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-02-25T22:55:23.108+09:00  INFO 6904 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-02-25T22:55:23.237+09:00  INFO 6904 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 111 ms. Found 1 JPA repository interfaces.
+2023-02-25T22:55:24.431+09:00  INFO 6904 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7777 (http)
+2023-02-25T22:55:24.447+09:00  INFO 6904 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-02-25T22:55:24.448+09:00  INFO 6904 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.5]
+2023-02-25T22:55:24.878+09:00  INFO 6904 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-02-25T22:55:24.886+09:00  INFO 6904 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2804 ms
+2023-02-25T22:55:25.766+09:00  INFO 6904 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-02-25T22:55:25.950+09:00  INFO 6904 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@d675f9f
+2023-02-25T22:55:25.952+09:00  INFO 6904 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-02-25T22:55:26.689+09:00  INFO 6904 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-02-25T22:55:27.745+09:00  INFO 6904 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-02-25T22:55:28.478+09:00  WARN 6904 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-02-25T22:55:29.873+09:00  INFO 6904 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7777 (http) with context path ''
+2023-02-25T22:55:29.889+09:00  INFO 6904 --- [main] j.f.S.SalaryDataManagerApplication       : Started SalaryDataManagerApplication in 8.608 seconds (process running for 9.153)
+2023-02-25T22:55:37.285+09:00  INFO 6904 --- [http-nio-7777-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-02-25T22:55:37.285+09:00  INFO 6904 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-02-25T22:55:37.286+09:00  INFO 6904 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-02-25T22:55:37.310+09:00  INFO 6904 --- [http-nio-7777-exec-1] j.f.S.i.LoggingHandlerInterceptor        : [127.0.0.1] GET  /salary/getByMonth
+2023-02-25T22:55:48.048+09:00  INFO 6904 --- [http-nio-7777-exec-3] j.f.S.i.LoggingHandlerInterceptor        : [127.0.0.1] GET  /salary/getByMonthBetween
+2023-02-25T22:56:26.961+09:00  INFO 6904 --- [http-nio-7777-exec-5] j.f.S.i.LoggingHandlerInterceptor        : [127.0.0.1] GET  /salary/getByMonthBefore
+2023-02-25T22:56:34.231+09:00  INFO 6904 --- [http-nio-7777-exec-7] j.f.S.i.LoggingHandlerInterceptor        : [127.0.0.1] GET  /salary/getById
+2023-02-25T22:57:12.407+09:00  INFO 6904 --- [http-nio-7777-exec-9] j.f.S.i.LoggingHandlerInterceptor        : [127.0.0.1] POST /salary/post
+2023-02-25T22:58:17.456+09:00  INFO 6904 --- [http-nio-7777-exec-1] j.f.S.i.LoggingHandlerInterceptor        : [127.0.0.1] POST /salary/post
+2023-02-25T22:58:25.004+09:00  INFO 6904 --- [http-nio-7777-exec-3] j.f.S.i.LoggingHandlerInterceptor        : [127.0.0.1] POST /salary/post
+2023-02-25T22:58:32.036+09:00  INFO 6904 --- [http-nio-7777-exec-5] j.f.S.i.LoggingHandlerInterceptor        : [127.0.0.1] POST /salary/post
+2023-02-25T22:58:39.998+09:00  INFO 6904 --- [http-nio-7777-exec-7] j.f.S.i.LoggingHandlerInterceptor        : [127.0.0.1] POST /salary/post
+2023-02-25T22:58:47.419+09:00  INFO 6904 --- [http-nio-7777-exec-9] j.f.S.i.LoggingHandlerInterceptor        : [127.0.0.1] POST /salary/postAll
+2023-02-25T22:58:53.598+09:00  INFO 6904 --- [http-nio-7777-exec-1] j.f.S.i.LoggingHandlerInterceptor        : [127.0.0.1] POST /salary/postAll
+2023-02-25T23:00:04.848+09:00  INFO 6904 --- [http-nio-7777-exec-3] j.f.S.i.LoggingHandlerInterceptor        : [127.0.0.1] PUT  /salary/put
+2023-02-25T23:00:07.096+09:00  INFO 6904 --- [http-nio-7777-exec-5] j.f.S.i.LoggingHandlerInterceptor        : [127.0.0.1] PUT  /salary/put
+2023-02-25T23:00:15.601+09:00  INFO 6904 --- [http-nio-7777-exec-7] j.f.S.i.LoggingHandlerInterceptor        : [127.0.0.1] PUT  /salary/put
+2023-02-25T23:00:31.695+09:00  INFO 6904 --- [http-nio-7777-exec-9] j.f.S.i.LoggingHandlerInterceptor        : [127.0.0.1] DELETE /salary/delete
+2023-02-25T23:00:38.790+09:00  INFO 6904 --- [http-nio-7777-exec-1] j.f.S.i.LoggingHandlerInterceptor        : [127.0.0.1] DELETE /salary/delete

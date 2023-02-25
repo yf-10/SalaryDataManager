@@ -87,8 +87,8 @@ public class SalaryService {
         }
         /* Save */
         final SalaryEntity saveEntity = object.convertToEntity();
-        final Salary savedObject = new Salary(salaryRepository.save(saveEntity));
-        return savedObject;
+        final Salary saveObject = new Salary(salaryRepository.save(saveEntity));
+        return saveObject;
     }
 
     /** POST List **/
@@ -102,14 +102,12 @@ public class SalaryService {
             }
         }
         /* Save */
-        List<SalaryEntity> saveEntities = new ArrayList<>();
-        objects.forEach(object -> {
-            saveEntities.add(object.convertToEntity());
-        });
-        final List<SalaryEntity> savedEntities = salaryRepository.saveAll(saveEntities);
-        List<Salary> savedObjects = new ArrayList<>();
-        savedEntities.forEach(each -> savedObjects.add(new Salary(each)));
-        return savedObjects;
+        List<SalaryEntity> entities = new ArrayList<>();
+        objects.forEach(each -> {entities.add(each.convertToEntity());});
+        final List<SalaryEntity> saveEntities = salaryRepository.saveAll(entities);
+        List<Salary> saveObjects = new ArrayList<>();
+        saveEntities.forEach(each -> saveObjects.add(new Salary(each)));
+        return saveObjects;
     }
 
     /** PUT **/
@@ -120,13 +118,13 @@ public class SalaryService {
         }
         /* Validate "Exclusive flag" */
         final Salary origin = this.getById(object);
-        if (object.getExclusiveFlag() != origin.getExclusiveFlag()) {
+        if (object.getRecordInfo().exclusiveFlag() != origin.getRecordInfo().exclusiveFlag()) {
             throw new RuntimeException("他の人が更新しています。[" + object.getMonth() + " " + object.getPaymentItem() + "]");
         }
         /* Save */
-        final SalaryEntity saveEntity = object.countUpExclusiveFlag().convertToEntity();
-        final Salary savedObject = new Salary(salaryRepository.save(saveEntity));
-        return savedObject;
+        final SalaryEntity entity = object.countUpExclusiveFlag().convertToEntity();
+        final Salary saveObject = new Salary(salaryRepository.save(entity));
+        return saveObject;
     }
 
     /** DELETE **/
@@ -136,10 +134,10 @@ public class SalaryService {
             throw new Exception("登録されていません。[" + object.getMonth() + " " + object.getPaymentItem() + "]");
         }
         /* Delete */
-        SalaryEntity deleteEntity = this.getById(object).convertToEntity();
-        salaryRepository.delete(deleteEntity);
-        Salary deletedObject = new Salary(deleteEntity);
-        return deletedObject;
+        SalaryEntity entity = this.getById(object).convertToEntity();
+        salaryRepository.delete(entity);
+        Salary deleteObject = new Salary(entity);
+        return deleteObject;
     }
 
 }

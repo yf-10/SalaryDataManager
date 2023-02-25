@@ -1,9 +1,14 @@
 package jp.fujino.SalaryDataManager.domain.object;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Currency;
 
-public record Money(int amount, String currencyCode) implements Serializable {
+public record Money(
+        Integer amount,
+        String currencyCode
+) implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
 
     /** Constructor **/

@@ -1,117 +1,85 @@
 package jp.fujino.SalaryDataManager.application.resource;
 
+import jp.fujino.SalaryDataManager.domain.object.RecordInfo;
 import jp.fujino.SalaryDataManager.domain.object.Salary;
 import jp.fujino.SalaryDataManager.domain.object.Money;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public record SalaryModel(
-        Date createdAt,
-        String createdBy,
-        Date updatedAt,
-        String updatedBy,
-        Integer exclusiveFlag,
+        RecordInfo recordInfo,
         String month,
         Boolean deduction,
         String paymentItem,
-        Money money
+        Integer amount,
+        String currencyCode
 ) implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    public static SalaryModel convToModel(final Salary object) {
+    public static SalaryModel convertToModel(final Salary object) {
         return new SalaryModel(
-                object.getCreatedAt(),
-                object.getCreatedBy(),
-                object.getUpdatedAt(),
-                object.getUpdatedBy(),
-                object.getExclusiveFlag(),
+                object.getRecordInfo(),
                 object.getMonth(),
                 object.getDeduction(),
                 object.getPaymentItem(),
-                object.getMoney()
+                object.getMoney().amount(),
+                object.getMoney().currencyCode()
         );
     }
 
-    public static List<SalaryModel> convToModels(final List<Salary> objects) {
+    public static List<SalaryModel> convertToModels(final List<Salary> objects) {
         List<SalaryModel> models = new ArrayList<>();
-        objects.forEach(each -> models.add(convToModel(each)));
+        objects.forEach(each -> models.add(convertToModel(each)));
         return models;
     }
 
-    public Salary convToObjForGet() {
+    public Salary modelToObjectGet() {
         return new Salary(
-                this.createdAt(),
-                this.createdBy(),
-                this.updatedAt(),
-                this.updatedBy(),
-                this.exclusiveFlag(),
+                null,
                 this.month(),
                 this.deduction(),
                 this.paymentItem(),
-                this.money()
+                null
         );
     }
 
-    public Salary convToObjectsForGet() {
+    public Salary modelToObjectPost(final String createdBy) {
         return new Salary(
-                this.createdAt(),
-                this.createdBy(),
-                this.updatedAt(),
-                this.updatedBy(),
-                this.exclusiveFlag(),
+                RecordInfo.createRecord(createdBy),
                 this.month(),
                 this.deduction(),
                 this.paymentItem(),
-                this.money()
+                new Money(
+                        this.amount(),
+                        this.currencyCode()
+                )
         );
     }
 
-    public Salary convToObjForPost(final String createdBy) {
-        final Date timestamp = new Date();
+    public Salary modelToObjectPut(final String updatedBy) {
         return new Salary(
-                timestamp,
-                createdBy,
-                timestamp,
-                createdBy,
-                0,
+                this.recordInfo().updateRecord(updatedBy),
                 this.month(),
                 this.deduction(),
                 this.paymentItem(),
-                this.money()
+                new Money(
+                        this.amount(),
+                        this.currencyCode()
+                )
         );
     }
 
-    public Salary convToObjForPut(final String updatedBy) {
-        final Date timestamp = new Date();
+    public Salary modelToObjectDelete() {
         return new Salary(
-                this.createdAt(),
-                this.createdBy(),
-                timestamp,
-                updatedBy,
-                this.exclusiveFlag(),
+                null,
                 this.month(),
                 this.deduction(),
                 this.paymentItem(),
-                this.money()
-        );
-    }
-
-    public Salary convToObjForDelete() {
-        return new Salary(
-                this.createdAt(),
-                this.createdBy(),
-                this.updatedAt(),
-                this.updatedBy(),
-                this.exclusiveFlag(),
-                this.month(),
-                this.deduction(),
-                this.paymentItem(),
-                this.money()
+                null
         );
     }
 
